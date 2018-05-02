@@ -1,0 +1,6 @@
+{
+  "extends": "@telenorfrontend/tslint-config-telenor",
+  "rules": {
+    "no-bitwise": false
+  }
+}
