@@ -1,0 +1,37 @@
+{
+  "name": "@exploratoryengineering/data-mapper-chain",
+  "version": "0.1.0",
+  "description": "Simple data mapper library meant to be run in browser to ease data transformation for IoT devices in JS",
+  "main": "index.ts",
+  "scripts": {
+    "commitmsg": "validate-commit-msg",
+    "release": "standard-version --silent",
+    "release:patch": "npm run release -- --release-as patch",
+    "release:minor": "npm run release -- --release-as minor",
+    "release:major": "npm run release -- --release-as major",
+    "test": "npm run test:unit && npm run test:tslint",
+    "test:unit": "del-cli test/coverage-jest && jest --config jest.config.json --forceExit",
+    "test:tslint": "tslint \"src/**/*.ts\" -c tslint.json"
+  },
+  "keywords": [
+    "iot",
+    "data",
+    "transform"
+  ],
+  "author": "Per Kristian Kummermo",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "@telenorfrontend/tslint-config-telenor": "^0.1.1",
+    "@types/jest": "^22.2.3",
+    "del-cli": "^1.1.0",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "jest-cli": "^22.4.3",
+    "jest-junit-reporter": "^1.1.0",
+    "standard-version": "^4.3.0",
+    "ts-jest": "^22.4.4",
+    "tslint": "^5.9.1",
+    "typescript": "^2.8.3",
+    "validate-commit-msg": "^2.14.0"
+  }
+}
