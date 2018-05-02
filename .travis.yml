@@ -1,8 +1,15 @@
 language:
   node_js
+
+node_js:
+  - "9"
+
 install:
+  - npm i
   - npm install -g codecov
+
 script:
   - npm t
+
 script:
   - npm t && codecov
