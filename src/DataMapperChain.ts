@@ -1,8 +1,8 @@
-import Base64 from "./sensor-data-mapper/Base64";
-import Chunk from "./sensor-data-mapper/Chunk";
-import FromJSON from "./sensor-data-mapper/FromJSON";
-import HexToInt from "./sensor-data-mapper/HexToInt";
-import Offset from "./sensor-data-mapper/Offset";
+import Base64 from "./mappers/Base64";
+import Chunk from "./mappers/Chunk";
+import FromJSON from "./mappers/FromJSON";
+import HexToInt from "./mappers/HexToInt";
+import Offset from "./mappers/Offset";
 
 interface MapperType {
   id: string;
