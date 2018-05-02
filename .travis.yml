@@ -5,4 +5,4 @@ install:
 script:
   - npm t
 script:
-  - jest && codecov
+  - npm t && codecov
