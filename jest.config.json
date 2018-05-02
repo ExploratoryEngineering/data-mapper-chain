@@ -30,7 +30,7 @@
     "!**/*.{d.ts}",
     "!**/{coverage,dist,node_modules}/**"
   ],
-  "coverageDirectory": "<rootDir>/coverage",
+  "coverageDirectory": "./coverage/",
   "coverageReporters": [
     "json",
     "lcov",
