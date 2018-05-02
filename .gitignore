@@ -1,0 +1,5 @@
+node_modules
+test-report.xml
+npm-debug.log*
+/dist
+/coverage
