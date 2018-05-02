@@ -1,0 +1,41 @@
+{
+  "globals": {
+    "ts-jest": {
+      "tsConfigFile": "tsconfig.jest.json",
+      "babelConfig": {
+        "plugins": [
+          "transform-es2015-modules-commonjs"
+        ]
+      }
+    }
+  },
+  "verbose": false,
+  "moduleFileExtensions": [
+    "js",
+    "json",
+    "ts"
+  ],
+  "moduleDirectories": [
+    "node_modules",
+    "src"
+  ],
+  "transform": {
+    "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+  },
+  "testRegex": "\\.spec\\.(ts|js)$",
+  "collectCoverage": true,
+  "collectCoverageFrom": [
+    "**/*.{js,ts}",
+    "!**/*.spec.{js,ts}",
+    "!**/*.{d.ts}",
+    "!**/{coverage,dist,node_modules}/**"
+  ],
+  "coverageDirectory": "<rootDir>/coverage",
+  "coverageReporters": [
+    "json",
+    "lcov",
+    "text",
+    "html"
+  ],
+  "testResultsProcessor": "./node_modules/jest-junit-reporter"
+}
