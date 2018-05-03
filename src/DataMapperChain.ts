@@ -4,7 +4,7 @@ import FromJSON from "./mappers/FromJSON";
 import HexToInt from "./mappers/HexToInt";
 import Offset from "./mappers/Offset";
 
-interface MapperType {
+export interface MapperType {
   id: string;
   value: string;
   entity: { new(params): IMapper };
