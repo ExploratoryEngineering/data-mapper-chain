@@ -1,4 +1,5 @@
-import HexToFloat, { Endianness } from "./HexToFloat";
+import { Endianness } from "../Config";
+import HexToFloat from "./HexToFloat";
 
 describe("Hex to float mapper", () => {
   let hexToFloat: HexToFloat;
