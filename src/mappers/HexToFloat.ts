@@ -1,7 +1,4 @@
-export enum Endianness {
-  LITTLE_ENDIAN = "le",
-  BIG_ENDIAN = "be",
-}
+import { Endianness } from "../Config";
 
 export default class HexToFloat implements IMapper {
   static ident: string = "HEXTOFLOAT";
