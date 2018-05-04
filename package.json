@@ -10,11 +10,12 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/ExploratoryEngineering/data-mapper-chain"
+    "url": "https://github.com/ExploratoryEngineering/data-mapper-chain.git"
   },
   "scripts": {
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src --exclude \"**/*.spec.ts\"",
     "commitmsg": "validate-commit-msg",
+    "publish-docs": "ts-node tools/publishToGhPages",
     "release": "standard-version --silent",
     "release:patch": "npm run release -- --release-as patch",
     "release:minor": "npm run release -- --release-as minor",
@@ -47,6 +48,7 @@
     "rollup-plugin-typescript2": "^0.13.0",
     "standard-version": "^4.3.0",
     "ts-jest": "^22.4.4",
+    "ts-node": "^6.0.2",
     "tslint": "^5.9.1",
     "typedoc": "^0.11.1",
     "typescript": "^2.8.3",
