@@ -2,3 +2,58 @@
 
 [![Build Status](https://travis-ci.org/ExploratoryEngineering/data-mapper-chain.svg?branch=master)](https://travis-ci.org/ExploratoryEngineering/data-mapper-chain)
 [![codecov](https://codecov.io/gh/ExploratoryEngineering/data-mapper-chain/branch/master/graph/badge.svg)](https://codecov.io/gh/ExploratoryEngineering/data-mapper-chain)
+
+Simple data mapper library meant to be run in browser to ease data transformation for IoT devices in JS.
+
+## Example
+
+```ts
+
+// Raw data from device
+const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
+
+/**
+ * We know that on byte 25 there is 2 bytes of data which is a hex encoded uint16
+ * We solve this by doing the following:
+ */
+
+/**
+ * Create a Chunk mapper
+ */
+const chunk = new Chunk({
+  start: 50,
+  size: 4,
+});
+
+/**
+ * Create a HexToInt mapper
+ */
+const hexToInt = new HexToInt();
+
+// Create a DataMapperChain
+const dataMapperChain = new DataMapperChain();
+
+// Add mappers
+dataMapperChain.addMapper(chunk);
+dataMapperChain.addMapper(hexToInt);
+
+// Create data object (conincidentally the value is CO2 ppm)
+const data: IDataValue = {
+  name: "CO2 ppm",
+  value: deviceData,
+};
+
+// Run mapper
+dataMapperChain.mapData(data); // prints { name: 'CO2 ppm', value: 587 }
+
+
+```
+
+## What
+The main workhorse is the `DataMapperChain` which serves a couple of purposes. It contains the different mappers you want to use in your "chain" of mappers and has functions to apply all mappers on a data set. It also allows for serializing configuration of both the chain and the added mappers. This serialized version can again be loaded directly into a new `DataMapperChain` which is now fully configured with the saved params. 
+
+## Why
+I found myself fiddling with a lot of IoT data recently and a need to graph it easily. The libs which which I found either relied heavily on `eval` or didn't have any typings. I chucked together this lib which is modular and pluggable and hopefully solves someones problem one day.
+
+## Pluggable
+While the lib provide a decent amount of mappers as a starting point, I know I don't cover every use case out there. 
