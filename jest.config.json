@@ -25,10 +25,11 @@
   "testRegex": "\\.spec\\.(ts|js)$",
   "collectCoverage": true,
   "collectCoverageFrom": [
-    "**/*.{js,ts}",
-    "!**/*.spec.{js,ts}",
+    "**/*.{ts}",
+    "!**/*.spec.{ts}",
+    "!*.ts",
     "!**/*.{d.ts}",
-    "!**/{coverage,dist,node_modules}/**"
+    "!**/{tools,coverage,dist,node_modules}/**"
   ],
   "coverageDirectory": "./coverage/",
   "coverageReporters": [
