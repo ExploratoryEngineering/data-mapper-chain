@@ -1,4 +1,4 @@
-import Base64, { Base64Actions } from "./Base64";
+import { Base64, Base64Actions } from "./Base64";
 
 describe("Base64 mapper", () => {
   let base64: Base64;

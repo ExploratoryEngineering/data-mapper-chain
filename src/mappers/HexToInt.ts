@@ -1,6 +1,7 @@
 import { Endianness } from "../Config";
+import { IDataValue, IMapper, IMapperConfig } from "./../Models";
 
-export default class HexToInt implements IMapper {
+export class HexToInt implements IMapper {
   static ident: string = "HEXTOINT";
   static description: string = "Hex to int";
   name: string = "Hex to int";
@@ -48,7 +49,16 @@ export default class HexToInt implements IMapper {
       }
 
       if (resString.length > 1) {
-        resString = resString.match(/(..)/g).reverse().join("");
+        const resStringGrouped = resString.match(/(..)/g);
+        if (resStringGrouped) {
+          resString = resStringGrouped.reverse().join("");
+        } else {
+          return {
+            ...data, ...{
+              value: 0,
+            },
+          };
+        }
       }
     }
 
@@ -69,4 +79,3 @@ export default class HexToInt implements IMapper {
     };
   }
 }
-// 000000c5170f000000f3170f000000a8170f000000a8170f000000cc170f

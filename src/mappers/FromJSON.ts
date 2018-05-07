@@ -1,4 +1,6 @@
-export default class FromJSON implements IMapper {
+import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+
+export class FromJSON implements IMapper {
   static ident: string = "FROMJSON";
   static description: string = "JSON";
   name: string = "JSON";
@@ -35,7 +37,7 @@ export default class FromJSON implements IMapper {
     }
 
     const pieces = this.propertyString.split(".");
-    let tempEl = { ...element };
+    let tempEl = { ...element } as any;
 
     pieces.forEach((piece) => {
       try {

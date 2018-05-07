@@ -1,13 +1,17 @@
-import Base64 from "./mappers/Base64";
-import Chunk from "./mappers/Chunk";
-import FromJSON from "./mappers/FromJSON";
-import HexToInt from "./mappers/HexToInt";
-import Offset from "./mappers/Offset";
+import { IDataValue, IMapper, IMapperConfig } from "./Models";
+
+import { Base64, Chunk, FromJSON, HexToInt, Offset } from "./Mappers";
+
+// import Base64 from "./mappers/Base64";
+// import Chunk from "./mappers/Chunk";
+// import FromJSON from "./mappers/FromJSON";
+// import HexToInt from "./mappers/HexToInt";
+// import Offset from "./mappers/Offset";
 
 export interface MapperType {
   id: string;
   value: string;
-  entity: { new(params): IMapper };
+  entity: { new(params: any): IMapper };
 }
 
 export let AVAILABLE_MAPPERS_TYPES: MapperType[] = [{
@@ -32,15 +36,20 @@ export let AVAILABLE_MAPPERS_TYPES: MapperType[] = [{
   entity: FromJSON,
 }];
 
-export default class DataMapperChain {
+export interface IDataMapperChainConfig {
+  mappers: IMapper[];
+  name: string;
+}
+
+export class DataMapperChain {
   mappers: IMapper[] = [];
-  initialValue: IDataValue;
+  initialValue: IDataValue = { name: "Unnamed data", value: "" };
   name: string = "";
 
   constructor({
     mappers = [],
     name = "",
-  } = {}) {
+  }: IDataMapperChainConfig = { mappers, name }) {
     this.name = name;
     this.mappers = mappers;
   }
@@ -99,7 +108,7 @@ export default class DataMapperChain {
     });
   }
 
-  mapData({ name = "Unnamed data", value = "" } = {}) {
+  mapData({ name = "Unnamed data", value = "" }: IDataValue = { name, value }) {
     this.initialValue = {
       name: name,
       value: value,

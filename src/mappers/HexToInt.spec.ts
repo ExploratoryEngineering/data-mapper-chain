@@ -1,5 +1,5 @@
 import { Endianness } from "../Config";
-import HexToInt from "./HexToInt";
+import { HexToInt } from "./HexToInt";
 
 describe("HexToInt mapper", () => {
   let hexToInt: HexToInt;

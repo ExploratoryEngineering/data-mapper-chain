@@ -1,4 +1,4 @@
-import FromJSON from "./FromJSON";
+import { FromJSON } from "./FromJSON";
 
 describe("FromJSON mapper", () => {
   let fromJSON: FromJSON;

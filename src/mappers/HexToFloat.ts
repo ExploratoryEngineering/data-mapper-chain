@@ -1,6 +1,8 @@
-import { Endianness } from "../Config";
 
-export default class HexToFloat implements IMapper {
+import { Endianness } from "../Config";
+import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+
+export class HexToFloat implements IMapper {
   static ident: string = "HEXTOFLOAT";
   static description: string = "Hex to float";
 
@@ -41,8 +43,17 @@ export default class HexToFloat implements IMapper {
       resString = resString.slice(2);
     }
 
-    if (this.endianness === Endianness.LITTLE_ENDIAN) {
-      resString = resString.match(/(..)/g).reverse().join("");
+    if (this.endianness === Endianness.LITTLE_ENDIAN && resString.length > 1) {
+      const resStringGrouped = resString.match(/(..)/g);
+      if (resStringGrouped) {
+        resString = resStringGrouped.reverse().join("");
+      } else {
+        return {
+          ...data, ...{
+            value: 0,
+          },
+        };
+      }
     }
 
     const hexValue = parseInt(resString, 16);

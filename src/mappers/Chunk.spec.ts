@@ -1,4 +1,4 @@
-import Chunk from "./Chunk";
+import { Chunk } from "./Chunk";
 
 describe("Chunk mapper", () => {
   let chunk: Chunk;

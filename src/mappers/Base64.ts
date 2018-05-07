@@ -1,9 +1,11 @@
+import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+
 export enum Base64Actions {
   ENCODE = "encode",
   DECODE = "decode",
 }
 
-export default class Base64 implements IMapper {
+export class Base64 implements IMapper {
   static ident: string = "BASE64";
   static description: string = "Base64";
   name: string = "Base64";

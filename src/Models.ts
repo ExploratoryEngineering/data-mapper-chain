@@ -1,14 +1,14 @@
-interface IDataValue {
+export interface IDataValue {
   name: string;
   value: string | number;
 }
 
-interface IMapperConfig {
+export interface IMapperConfig {
   ident: string;
   params: any;
 }
 
-interface IMapper {
+export interface IMapper {
   transform(data: IDataValue): IDataValue;
   config(): IMapperConfig;
 }

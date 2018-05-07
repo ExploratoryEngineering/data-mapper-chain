@@ -1,4 +1,4 @@
-import Offset from "./Offset";
+import { Offset } from "./Offset";
 
 describe("Offset data mapper", () => {
   let offset: Offset;

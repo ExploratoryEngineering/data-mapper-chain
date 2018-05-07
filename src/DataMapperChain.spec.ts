@@ -1,4 +1,5 @@
-import DataMapperChain, { AVAILABLE_MAPPERS_TYPES } from "./DataMapperChain";
+import { AVAILABLE_MAPPERS_TYPES, DataMapperChain } from "./DataMapperChain";
+import { IDataValue, IMapper, IMapperConfig } from "./Models";
 
 class MapperMock implements IMapper {
   initParams: any = {};

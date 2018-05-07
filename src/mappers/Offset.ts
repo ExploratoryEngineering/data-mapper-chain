@@ -1,4 +1,6 @@
-export default class Offset implements IMapper {
+import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+
+export class Offset implements IMapper {
   static ident: string = "OFFSET";
   static description: string = "Offset number";
   name: string = "Offset";

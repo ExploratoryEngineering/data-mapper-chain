@@ -10,6 +10,7 @@
       "dom"
     ],
     "sourceMap": true,
+    "strict": true,
     "declaration": true,
     "allowSyntheticDefaultImports": true,
     "experimentalDecorators": true,

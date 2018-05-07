@@ -1,3 +1,5 @@
+import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+
 export interface IChunkConfig {
   // Start-index of chunk
   start?: string | number;
@@ -5,7 +7,7 @@ export interface IChunkConfig {
   size?: string | number;
 }
 
-export default class Chunk implements IMapper {
+export class Chunk implements IMapper {
   static ident: string = "CHUNK";
   static description: string = "Chunk";
   name: string = "Chunk";

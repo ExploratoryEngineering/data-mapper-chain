@@ -4,6 +4,7 @@ import json from "rollup-plugin-json";
 import resolve from "rollup-plugin-node-resolve";
 import sourceMaps from "rollup-plugin-sourcemaps";
 import typescript from "rollup-plugin-typescript2";
+import uglify from "rollup-plugin-uglify";
 
 // tslint:disable-next-line:no-var-requires
 const pkg = require("./package.json");
@@ -11,7 +12,7 @@ const pkg = require("./package.json");
 const libraryName = "DataMapperChain";
 
 export default {
-    input: `src/${libraryName}.ts`,
+    entry: `src/main.ts`,
     output: [
         { file: pkg.main, name: camelCase(libraryName), format: "umd" },
         { file: pkg.module, format: "es" },
@@ -36,5 +37,7 @@ export default {
 
         // Resolve source maps to the original source
         sourceMaps(),
+
+        uglify(),
     ],
 };
