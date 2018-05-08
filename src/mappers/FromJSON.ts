@@ -1,5 +1,9 @@
 import { IDataValue, IMapper, IMapperConfig } from "./../Models";
 
+export interface IFromJSONConfig {
+  propertyString?: string;
+}
+
 export class FromJSON implements IMapper {
   static ident: string = "FROMJSON";
   static description: string = "JSON";
@@ -9,7 +13,7 @@ export class FromJSON implements IMapper {
 
   constructor({
     propertyString = "",
-  } = {}) {
+  }: IFromJSONConfig = {}) {
     this.propertyString = propertyString;
   }
 

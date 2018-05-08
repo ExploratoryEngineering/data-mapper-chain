@@ -1,6 +1,11 @@
 import { Endianness } from "../Config";
 import { IDataValue, IMapper, IMapperConfig } from "./../Models";
 
+export interface IHexToIntConfig {
+  endianness?: Endianness;
+  signed?: boolean;
+}
+
 export class HexToInt implements IMapper {
   static ident: string = "HEXTOINT";
   static description: string = "Hex to int";
@@ -13,7 +18,7 @@ export class HexToInt implements IMapper {
   constructor({
     endianness = Endianness.BIG_ENDIAN,
     signed = false,
-  } = {}) {
+  }: IHexToIntConfig = {}) {
     this.endianness = endianness;
     this.signed = signed;
   }

@@ -1,6 +1,9 @@
-
 import { Endianness } from "../Config";
 import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+
+export interface IHexToFloatConfig {
+  endianness?: Endianness;
+}
 
 export class HexToFloat implements IMapper {
   static ident: string = "HEXTOFLOAT";
@@ -11,7 +14,7 @@ export class HexToFloat implements IMapper {
 
   constructor({
     endianness = Endianness.BIG_ENDIAN,
-  } = {}) {
+  }: IHexToFloatConfig = {}) {
     this.endianness = endianness;
   }
 

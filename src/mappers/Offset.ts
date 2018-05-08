@@ -1,5 +1,9 @@
 import { IDataValue, IMapper, IMapperConfig } from "./../Models";
 
+export interface IOffsetConfig {
+  offset?: number | string;
+}
+
 export class Offset implements IMapper {
   static ident: string = "OFFSET";
   static description: string = "Offset number";
@@ -8,7 +12,7 @@ export class Offset implements IMapper {
 
   constructor({
     offset = "0",
-  } = {}) {
+  }: IOffsetConfig = {}) {
     this.offset = parseInt(offset.toString(), 10);
   }
 

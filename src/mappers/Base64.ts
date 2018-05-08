@@ -5,6 +5,10 @@ export enum Base64Actions {
   DECODE = "decode",
 }
 
+export interface IBase64Config {
+  action?: Base64Actions;
+}
+
 export class Base64 implements IMapper {
   static ident: string = "BASE64";
   static description: string = "Base64";
@@ -14,7 +18,7 @@ export class Base64 implements IMapper {
 
   constructor({
     action = Base64Actions.DECODE,
-  } = {}) {
+  }: IBase64Config = {}) {
     this.action = action;
   }
 
