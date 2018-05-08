@@ -1,12 +1,7 @@
+import { Mappers } from "./Mappers";
 import { IDataValue, IMapper, IMapperConfig } from "./Models";
 
-import { Base64, Chunk, FromJSON, HexToInt, Offset } from "./Mappers";
-
-// import Base64 from "./mappers/Base64";
-// import Chunk from "./mappers/Chunk";
-// import FromJSON from "./mappers/FromJSON";
-// import HexToInt from "./mappers/HexToInt";
-// import Offset from "./mappers/Offset";
+const { Base64, Chunk, FromJSON, HexToInt, Offset } = Mappers;
 
 export interface MapperType {
   id: string;

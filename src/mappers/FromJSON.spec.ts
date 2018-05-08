@@ -99,6 +99,21 @@ describe("FromJSON mapper", () => {
     });
   });
 
+  describe("Configuration", () => {
+    it("should correctly return config based on initial configuration", () => {
+      const simpleFromJson = new FromJSON({
+        propertyString: "simple",
+      });
+
+      expect(simpleFromJson.config()).toEqual({
+        ident: "FROMJSON",
+        params: {
+          propertyString: "simple",
+        },
+      });
+    });
+  });
+
   describe("Invalid input", () => {
     it("should return empty string on nonexistant property", () => {
       const inputObj = {

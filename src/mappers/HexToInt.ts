@@ -8,7 +8,7 @@ export class HexToInt implements IMapper {
 
   endianness: Endianness = Endianness.BIG_ENDIAN;
   signed: boolean = false;
-  hexRegExp: RegExp = new RegExp(/^[a-fA-F0-9_]+$/);
+  hexRegExp: RegExp = new RegExp(/^[a-fxA-F0-9_]+$/);
 
   constructor({
     endianness = Endianness.BIG_ENDIAN,
@@ -30,7 +30,11 @@ export class HexToInt implements IMapper {
 
   transform(data: IDataValue): IDataValue {
     if (!data.value) {
-      return data;
+      return {
+        ...data, ... {
+          value: 0,
+        },
+      };
     }
 
     let resString: string = data.value.toString();
@@ -52,12 +56,6 @@ export class HexToInt implements IMapper {
         const resStringGrouped = resString.match(/(..)/g);
         if (resStringGrouped) {
           resString = resStringGrouped.reverse().join("");
-        } else {
-          return {
-            ...data, ...{
-              value: 0,
-            },
-          };
         }
       }
     }

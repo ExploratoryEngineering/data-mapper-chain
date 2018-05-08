@@ -7,7 +7,7 @@ export class HexToFloat implements IMapper {
   static description: string = "Hex to float";
 
   endianness: Endianness = Endianness.BIG_ENDIAN;
-  hexRegExp: RegExp = new RegExp(/^[a-fA-F0-9_]+$/);
+  hexRegExp: RegExp = new RegExp(/^[a-fxA-F0-9_]+$/);
 
   constructor({
     endianness = Endianness.BIG_ENDIAN,
@@ -26,7 +26,11 @@ export class HexToFloat implements IMapper {
 
   transform(data: IDataValue): IDataValue {
     if (!data.value) {
-      return data;
+      return {
+        ...data, ... {
+          value: 0,
+        },
+      };
     }
 
     let resString: string = data.value.toString();

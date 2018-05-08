@@ -8,3 +8,7 @@ export enum Endianness {
    */
   BIG_ENDIAN = "be",
 }
+
+export const Config = {
+  Endianness,
+};

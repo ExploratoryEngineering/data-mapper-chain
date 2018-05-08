@@ -40,6 +40,22 @@ describe("HexToInt mapper", () => {
         value: -17730,
       });
     });
+
+    it("should allow for prepended 0x on value", () => {
+      const inputObj = {
+        name: "name",
+        value: "0xbabe",
+      };
+
+      hexToInt.signed = false;
+
+      const transformRes = hexToInt.transform(inputObj);
+
+      expect(transformRes).toEqual({
+        name: "name",
+        value: 47806,
+      });
+    });
   });
 
   describe("Little endianness", () => {
@@ -78,11 +94,58 @@ describe("HexToInt mapper", () => {
         value: -16710,
       });
     });
+
+    it("should allow for prepended 0x on value", () => {
+      const inputObj = {
+        name: "name",
+        value: "0xbabe",
+      };
+
+      hexToInt.signed = false;
+
+      const transformRes = hexToInt.transform(inputObj);
+
+      expect(transformRes).toEqual({
+        name: "name",
+        value: 48826,
+      });
+    });
+  });
+
+  describe("Configuration", () => {
+    it("should correctly return config based on initial configuration", () => {
+      const hexToIntWithConfig = new HexToInt({
+        endianness: Endianness.LITTLE_ENDIAN,
+        signed: true,
+      });
+
+      expect(hexToIntWithConfig.config()).toEqual({
+        ident: "HEXTOINT",
+        params: {
+          endianness: Endianness.LITTLE_ENDIAN,
+          signed: true,
+        },
+      });
+    });
   });
 
   describe("Invalid input", () => {
     beforeEach(() => {
       hexToInt = new HexToInt();
+    });
+
+    it("should return 0 upon empty value input", () => {
+      const inputObj = {
+        name: "Undef value",
+        value: undefined,
+      };
+
+      const transformRes = hexToInt.transform(inputObj);
+
+      expect(transformRes).toEqual({
+        name: "Undef value",
+        value: 0,
+      });
     });
 
     it("should return 0 for invalid input", () => {

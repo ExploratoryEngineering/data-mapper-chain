@@ -57,6 +57,21 @@ describe("Offset data mapper", () => {
     });
   });
 
+  describe("Configuration", () => {
+    it("should correctly return config based on initial configuration", () => {
+      const simpleOffset = new Offset({
+        offset: "25",
+      });
+
+      expect(simpleOffset.config()).toEqual({
+        ident: "OFFSET",
+        params: {
+          offset: 25,
+        },
+      });
+    });
+  });
+
   describe("Invalid input", () => {
     it("should return 0 for NaN input", () => {
       const inputObj = {

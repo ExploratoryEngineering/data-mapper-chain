@@ -37,6 +37,21 @@ describe("Base64 mapper", () => {
     });
   });
 
+  describe("Configuration", () => {
+    it("should correctly return config based on initial configuration", () => {
+      const base64encode = new Base64({
+        action: Base64Actions.ENCODE,
+      });
+
+      expect(base64encode.config()).toEqual({
+        ident: "BASE64",
+        params: {
+          action: Base64Actions.ENCODE,
+        },
+      });
+    });
+  });
+
   describe("Invalid input", () => {
     it("should correctly return the given object if no value is present", () => {
       const inputObj = {
