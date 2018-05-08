@@ -1,7 +1,8 @@
+import { IBase64Config, IChunkConfig, IFromJSONConfig, IHexToFloatConfig, IHexToIntConfig, IOffsetConfig } from "./Config";
 import { Mappers } from "./Mappers";
 import { IDataValue, IMapper, IMapperConfig } from "./Models";
 
-const { Base64, Chunk, FromJSON, HexToInt, Offset } = Mappers;
+const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
 
 export interface MapperType {
   id: string;
@@ -13,6 +14,10 @@ export let AVAILABLE_MAPPERS_TYPES: MapperType[] = [{
   id: Chunk.ident,
   value: Chunk.description,
   entity: Chunk,
+}, {
+  id: HexToFloat.ident,
+  value: HexToFloat.description,
+  entity: HexToFloat,
 }, {
   id: HexToInt.ident,
   value: HexToInt.description,
@@ -32,8 +37,13 @@ export let AVAILABLE_MAPPERS_TYPES: MapperType[] = [{
 }];
 
 export interface IDataMapperChainConfig {
-  mappers: IMapper[];
-  name: string;
+  mappers?: IMapper[];
+  name?: string;
+}
+
+export interface IMapDataValue {
+  name?: string;
+  value?: number | string;
 }
 
 export class DataMapperChain {
@@ -103,7 +113,7 @@ export class DataMapperChain {
     });
   }
 
-  mapData({ name = "Unnamed data", value = "" }: IDataValue = { name, value }) {
+  mapData({ name = "Unnamed data", value = "" }: IMapDataValue = { name, value }) {
     this.initialValue = {
       name: name,
       value: value,
@@ -112,5 +122,31 @@ export class DataMapperChain {
     return this.mappers.reduce((curr, mapper, idx) => {
       return mapper.transform(curr);
     }, this.initialValue);
+  }
+
+  // Explicit mappers to ease declarative mapping
+  base64(base64Config: IBase64Config): DataMapperChain {
+    this.addMapper(new Base64(base64Config));
+    return this;
+  }
+  chunk(chunkConfig: IChunkConfig): DataMapperChain {
+    this.addMapper(new Chunk(chunkConfig));
+    return this;
+  }
+  fromJson(fromJsonConfig: IFromJSONConfig) {
+    this.addMapper(new FromJSON(fromJsonConfig));
+    return this;
+  }
+  hexToFloat(hexToFloatConfig: IHexToFloatConfig) {
+    this.addMapper(new HexToFloat(hexToFloatConfig));
+    return this;
+  }
+  hexToInt(hexToIntConfig: IHexToIntConfig) {
+    this.addMapper(new HexToInt(hexToIntConfig));
+    return this;
+  }
+  offset(offsetConfig: IOffsetConfig) {
+    this.addMapper(new Offset(offsetConfig));
+    return this;
   }
 }

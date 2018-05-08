@@ -1,5 +1,8 @@
 import { AVAILABLE_MAPPERS_TYPES, DataMapperChain } from "./DataMapperChain";
+import { Mappers } from "./Mappers";
 import { IDataValue, IMapper, IMapperConfig } from "./Models";
+
+const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
 
 class MapperMock implements IMapper {
   initParams: any = {};
@@ -176,6 +179,44 @@ describe("Data mapper chain", () => {
         name: "MOCK WAS HERE",
         value: "babe",
       });
+    });
+  });
+
+  describe("Explicit mappers", () => {
+    it("should have a currying Base64 mapper", () => {
+      const curriedChain = dataMapperChain.base64({});
+      expect(curriedChain.mappers.length).toBe(1);
+      expect(curriedChain.mappers[0] instanceof Base64).toBe(true);
+    });
+
+    it("should have a currying Chunk mapper", () => {
+      const curriedChain = dataMapperChain.chunk({});
+      expect(curriedChain.mappers.length).toBe(1);
+      expect(curriedChain.mappers[0] instanceof Chunk).toBe(true);
+    });
+
+    it("should have a currying FromJSON mapper", () => {
+      const curriedChain = dataMapperChain.fromJson({});
+      expect(curriedChain.mappers.length).toBe(1);
+      expect(curriedChain.mappers[0] instanceof FromJSON).toBe(true);
+    });
+
+    it("should have a currying HexToFloat mapper", () => {
+      const curriedChain = dataMapperChain.hexToFloat({});
+      expect(curriedChain.mappers.length).toBe(1);
+      expect(curriedChain.mappers[0] instanceof HexToFloat).toBe(true);
+    });
+
+    it("should have a currying HexToInt mapper", () => {
+      const curriedChain = dataMapperChain.hexToInt({});
+      expect(curriedChain.mappers.length).toBe(1);
+      expect(curriedChain.mappers[0] instanceof HexToInt).toBe(true);
+    });
+
+    it("should have a currying Offset mapper", () => {
+      const curriedChain = dataMapperChain.offset({});
+      expect(curriedChain.mappers.length).toBe(1);
+      expect(curriedChain.mappers[0] instanceof Offset).toBe(true);
     });
   });
 
