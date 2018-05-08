@@ -6,9 +6,32 @@
 
 Simple data mapper library meant to be run in browser to ease data transformation for IoT devices in JS.
 
-## Example
+## Example: Simple in browser
+```html
+<body>
+  ...
+  <script src="https://cdn.jsdelivr.net/npm/@exploratoryengineering/data-mapper-chain"></script>
+  <script>
+    var myMapper = dataMapperChain
+      .DataMapperChain()
+      .chunk({ start: 2, size: 2})
+      .hexToInt();
+
+    console.log(myMapper.mapData({
+      name: "My hex value",
+      value: "babe"
+    })); // Prints 190
+  </script>
+</body>
+```
+
+## Example: In ts
+`npm i @exploratoryengineering/data-mapper-chain`
+
 
 ```ts
+
+import { DataMapperChain, IDataValue, Mappers } from "@exploratoryengineering/data-mapper-chain";
 
 // Raw data from device
 const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
@@ -21,7 +44,7 @@ const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d8400002
 /**
  * Create a Chunk mapper
  */
-const chunk = new Chunk({
+const chunk = new Mappers.Chunk({
   start: 50,
   size: 4,
 });
@@ -29,7 +52,7 @@ const chunk = new Chunk({
 /**
  * Create a HexToInt mapper
  */
-const hexToInt = new HexToInt();
+const hexToInt = new Mappers.HexToInt();
 
 // Create a DataMapperChain
 const dataMapperChain = new DataMapperChain();
