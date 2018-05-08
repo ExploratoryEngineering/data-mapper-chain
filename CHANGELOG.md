@@ -2,6 +2,23 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.2.1...v0.3.0) (2018-05-08)
+
+
+### Bug Fixes
+
+* **travis:** fix and tweak travis ([0c20ec3](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/0c20ec3))
+
+
+### Features
+
+* **DataMapperChain:** add currying of mappers. Fixes [#3](https://github.com/ExploratoryEngineering/data-mapper-chain/issues/3) ([0afdf20](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/0afdf20))
+* **dist-build:** add step for dist creation ([1a6854d](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/1a6854d))
+* **mappers:** type constructors. Fixes [#2](https://github.com/ExploratoryEngineering/data-mapper-chain/issues/2) ([2eaa150](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/2eaa150))
+
+
+
 <a name="0.2.1"></a>
 ## [0.2.1](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.2.0...v0.2.1) (2018-05-02)
 
