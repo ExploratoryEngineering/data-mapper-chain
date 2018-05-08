@@ -12,3 +12,9 @@ export interface IMapper {
   transform(data: IDataValue): IDataValue;
   config(): IMapperConfig;
 }
+
+export interface IMapperType {
+  id: string;
+  value: string;
+  entity: { new(params: any): IMapper };
+}

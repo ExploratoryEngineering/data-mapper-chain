@@ -1,6 +1,6 @@
-import { AVAILABLE_MAPPERS_TYPES, DataMapperChain } from "./DataMapperChain";
-import { Mappers } from "./Mappers";
-import { IDataValue, IMapper, IMapperConfig } from "./Models";
+import { DataMapperChain } from "./DataMapperChain";
+import { AVAILABLE_MAPPERS_TYPES, Mappers } from "./Mappers";
+import { IDataValue, IMapper, IMapperConfig } from "./Typings";
 
 const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
 

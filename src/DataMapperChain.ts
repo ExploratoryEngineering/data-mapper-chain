@@ -1,40 +1,8 @@
 import { IBase64Config, IChunkConfig, IFromJSONConfig, IHexToFloatConfig, IHexToIntConfig, IOffsetConfig } from "./Config";
-import { Mappers } from "./Mappers";
-import { IDataValue, IMapper, IMapperConfig } from "./Models";
+import { AVAILABLE_MAPPERS_TYPES, Mappers } from "./Mappers";
+import { IDataValue, IMapper, IMapperConfig, IMapperType } from "./Typings";
 
 const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
-
-export interface MapperType {
-  id: string;
-  value: string;
-  entity: { new(params: any): IMapper };
-}
-
-export let AVAILABLE_MAPPERS_TYPES: MapperType[] = [{
-  id: Chunk.ident,
-  value: Chunk.description,
-  entity: Chunk,
-}, {
-  id: HexToFloat.ident,
-  value: HexToFloat.description,
-  entity: HexToFloat,
-}, {
-  id: HexToInt.ident,
-  value: HexToInt.description,
-  entity: HexToInt,
-}, {
-  id: Offset.ident,
-  value: Offset.description,
-  entity: Offset,
-}, {
-  id: Base64.ident,
-  value: Base64.description,
-  entity: Base64,
-}, {
-  id: FromJSON.ident,
-  value: FromJSON.description,
-  entity: FromJSON,
-}];
 
 export interface IDataMapperChainConfig {
   mappers?: IMapper[];
@@ -94,7 +62,7 @@ export class DataMapperChain {
     this.mappers.push(mapper);
   }
 
-  addNewMapperType(mapperType: MapperType) {
+  addNewMapperType(mapperType: IMapperType) {
     const existingMapper = this.findMapperTypeById(mapperType.id);
     if (!existingMapper) {
       AVAILABLE_MAPPERS_TYPES.push(mapperType);

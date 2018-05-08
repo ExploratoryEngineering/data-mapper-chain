@@ -1,4 +1,4 @@
-import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
 
 export interface IOffsetConfig {
   offset?: number | string;

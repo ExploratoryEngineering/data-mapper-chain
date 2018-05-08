@@ -1,5 +1,5 @@
 import { Endianness } from "../Config";
-import { IDataValue, IMapper, IMapperConfig } from "./../Models";
+import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
 
 export interface IHexToIntConfig {
   endianness?: Endianness;
