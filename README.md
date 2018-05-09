@@ -1,6 +1,8 @@
 # Data mapper chain
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![data-mapper-chain](https://img.shields.io/npm/v/@exploratoryengineering/data-mapper-chain.svg)](https://www.npmjs.com/package/@exploratoryengineering/data-mapper-chain)
+![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@exploratoryengineering/data-mapper-chain.svg)
 [![Build Status](https://travis-ci.org/ExploratoryEngineering/data-mapper-chain.svg?branch=master)](https://travis-ci.org/ExploratoryEngineering/data-mapper-chain)
 [![codecov](https://codecov.io/gh/ExploratoryEngineering/data-mapper-chain/branch/master/graph/badge.svg)](https://codecov.io/gh/ExploratoryEngineering/data-mapper-chain)
 
