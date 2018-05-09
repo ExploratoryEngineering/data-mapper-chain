@@ -13,9 +13,10 @@
     "url": "https://github.com/ExploratoryEngineering/data-mapper-chain.git"
   },
   "scripts": {
-    "prebuild": "del-cli dist",
+    "prebuild": "npm t && del-cli dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --theme minimal --mode file src --exclude \"**/*.spec.ts\"",
     "commitmsg": "validate-commit-msg",
+    "prepublish": "npm run build",
     "publish-docs": "ts-node tools/publishToGhPages",
     "release": "standard-version --silent",
     "release:patch": "npm run release -- --release-as patch",
