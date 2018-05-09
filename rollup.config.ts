@@ -1,4 +1,3 @@
-import camelCase from "lodash.camelcase";
 import commonjs from "rollup-plugin-commonjs";
 import json from "rollup-plugin-json";
 import resolve from "rollup-plugin-node-resolve";
@@ -9,12 +8,12 @@ import uglify from "rollup-plugin-uglify";
 // tslint:disable-next-line:no-var-requires
 const pkg = require("./package.json");
 
-const libraryName = "DataMapperChain";
+const libraryName = "dmc";
 
 export default {
     entry: `src/main.ts`,
     output: [
-        { file: pkg.main, name: camelCase(libraryName), format: "umd" },
+        { file: pkg.main, name: libraryName, format: "umd" },
         { file: pkg.module, format: "es" },
     ],
     sourcemap: true,
