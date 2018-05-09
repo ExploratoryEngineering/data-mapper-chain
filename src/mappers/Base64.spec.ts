@@ -1,4 +1,5 @@
-import { Base64, Base64Actions } from "./Base64";
+import { Base64Action } from "../Config";
+import { Base64 } from "./Base64";
 
 describe("Base64 mapper", () => {
   let base64: Base64;
@@ -11,7 +12,7 @@ describe("Base64 mapper", () => {
 
   describe("Base64 encoding/decoding", () => {
     it("should correctly encode a string given", () => {
-      base64.action = Base64Actions.ENCODE;
+      base64.action = Base64Action.ENCODE;
       const transformRes = base64.transform({
         name: "data",
         value: helloWorldString,
@@ -24,7 +25,7 @@ describe("Base64 mapper", () => {
     });
 
     it("should correctly decode a base 64 string given", () => {
-      base64.action = Base64Actions.DECODE;
+      base64.action = Base64Action.DECODE;
       const transformRes = base64.transform({
         name: "data",
         value: helloWorldBase64,
@@ -40,13 +41,13 @@ describe("Base64 mapper", () => {
   describe("Configuration", () => {
     it("should correctly return config based on initial configuration", () => {
       const base64encode = new Base64({
-        action: Base64Actions.ENCODE,
+        action: Base64Action.ENCODE,
       });
 
       expect(base64encode.config()).toEqual({
         ident: "BASE64",
         params: {
-          action: Base64Actions.ENCODE,
+          action: Base64Action.ENCODE,
         },
       });
     });
@@ -57,6 +58,17 @@ describe("Base64 mapper", () => {
       const inputObj = {
         name: "name",
         value: "",
+      };
+
+      const transformRes = base64.transform(inputObj);
+
+      expect(transformRes).toBe(inputObj);
+    });
+
+    it("should correctly return value if base 64 decoding fails", () => {
+      const inputObj = {
+        name: "name",
+        value: "æøå",
       };
 
       const transformRes = base64.transform(inputObj);

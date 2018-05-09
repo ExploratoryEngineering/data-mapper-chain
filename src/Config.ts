@@ -16,6 +16,12 @@ export enum Endianness {
   BIG_ENDIAN = "be",
 }
 
+export enum Base64Action {
+  ENCODE = "encode",
+  DECODE = "decode",
+}
+
 export const Config = {
+  Base64Action,
   Endianness,
 };

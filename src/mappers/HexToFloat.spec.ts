@@ -102,6 +102,20 @@ describe("Hex to float mapper", () => {
         value: 0.1821763664484024,
       });
     });
+
+    it("should correctly transform a signed hex", () => {
+      const inputObj = {
+        name: "name",
+        value: "bfeccccd",
+      };
+      hexToFloat.endianness = Endianness.BIG_ENDIAN;
+      const transformRes = hexToFloat.transform(inputObj);
+
+      expect(transformRes).toEqual({
+        name: "name",
+        value: -1.850000023841858,
+      });
+    });
   });
 
   describe("Invalid input", () => {

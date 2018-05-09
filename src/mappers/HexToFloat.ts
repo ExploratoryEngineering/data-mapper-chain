@@ -54,12 +54,6 @@ export class HexToFloat implements IMapper {
       const resStringGrouped = resString.match(/(..)/g);
       if (resStringGrouped) {
         resString = resStringGrouped.reverse().join("");
-      } else {
-        return {
-          ...data, ...{
-            value: 0,
-          },
-        };
       }
     }
 

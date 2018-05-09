@@ -144,5 +144,27 @@ describe("FromJSON mapper", () => {
         value: JSON.stringify(arrayTestObject.myArray),
       });
     });
+
+    it("should correctly return the given object if no value is present", () => {
+      const inputObj = {
+        name: "name",
+        value: "",
+      };
+
+      const transformRes = fromJSON.transform(inputObj);
+
+      expect(transformRes).toBe(inputObj);
+    });
+
+    it("should correctly return the given object if it's not JSON parsable", () => {
+      const inputObj = {
+        name: "name",
+        value: "{æøå}",
+      };
+
+      const transformRes = fromJSON.transform(inputObj);
+
+      expect(transformRes).toBe(inputObj);
+    });
   });
 });

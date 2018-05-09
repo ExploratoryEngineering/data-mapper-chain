@@ -27,7 +27,7 @@ export class DataMapperChain {
     this.mappers = mappers;
   }
 
-  serializeConfig() {
+  serializeConfig(): string {
     return JSON.stringify({
       name: this.name,
       mappers: this.mappers.map((mapper) => {
@@ -36,7 +36,7 @@ export class DataMapperChain {
     });
   }
 
-  loadConfig(configString: string) {
+  loadConfig(configString: string): DataMapperChain {
     const parsedConfig = JSON.parse(configString);
     this.name = parsedConfig.name;
     const mapperConfigs: IMapperConfig[] = parsedConfig.mappers;
@@ -47,6 +47,8 @@ export class DataMapperChain {
         this.addMapper(mapper);
       }
     });
+
+    return this;
   }
 
   getMapperByConfig(config: IMapperConfig): IMapper | false {
