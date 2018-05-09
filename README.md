@@ -2,7 +2,7 @@
 
 [![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
 [![data-mapper-chain](https://img.shields.io/npm/v/@exploratoryengineering/data-mapper-chain.svg)](https://www.npmjs.com/package/@exploratoryengineering/data-mapper-chain)
-![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@exploratoryengineering/data-mapper-chain.svg)
+[![npm bundle size (minified + gzip)](https://img.shields.io/bundlephobia/minzip/@exploratoryengineering/data-mapper-chain.svg)](#tiny)
 [![Build Status](https://travis-ci.org/ExploratoryEngineering/data-mapper-chain.svg?branch=master)](https://travis-ci.org/ExploratoryEngineering/data-mapper-chain)
 [![codecov](https://codecov.io/gh/ExploratoryEngineering/data-mapper-chain/branch/master/graph/badge.svg)](https://codecov.io/gh/ExploratoryEngineering/data-mapper-chain)
 
@@ -111,3 +111,6 @@ I found myself fiddling with a lot of IoT data recently and a need to graph it e
 
 ## Pluggable
 While the lib provide a decent amount of mappers as a starting point, I know I don't cover every use case out there.
+
+## Tiny
+The library relies mostly on native functions meaning it shouldn't get too big. More complex mappers should be application specific and be a part of the application which imports the library.
