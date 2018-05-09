@@ -38,6 +38,9 @@ npm i @exploratoryengineering/data-mapper-chain
 ```ts
 import { DataMapperChain, IDataValue } from 
 
+// Raw data from device
+const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
+
 // Create a chain and add mappers
 const dataMapperChain = new DataMapperChain()
   .chunk({
