@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.1"></a>
+## [0.4.1](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.4.0...v0.4.1) (2018-05-13)
+
+
+### Features
+
+* **factory:** add DataMapperChain factory in main ([152867b](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/152867b)), closes [#6](https://github.com/ExploratoryEngineering/data-mapper-chain/issues/6)
+
+
+
 <a name="0.4.0"></a>
 # [0.4.0](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.3.1...v0.4.0) (2018-05-09)
 
