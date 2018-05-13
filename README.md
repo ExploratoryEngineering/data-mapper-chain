@@ -37,7 +37,7 @@ npm i @exploratoryengineering/data-mapper-chain
 
 ### Using shorthand
 ```ts
-import { DataMapperChain, IDataValue } from 
+import { DataMapperChain, IDataValue } from "@exploratoryengineering/data-mapper-chain";
 
 // Raw data from device
 const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
