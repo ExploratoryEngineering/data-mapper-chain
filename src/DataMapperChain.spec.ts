@@ -118,7 +118,7 @@ describe("Data mapper chain", () => {
     });
 
     it("should correctly return mapper initiated with params if type is present", () => {
-      const mapperRes = dataMapperChain.getMapperByConfig({
+      const mapperRes = dataMapperChain.createMapperByConfig({
         ident: "MOCK",
         params: "params",
       });
@@ -128,7 +128,7 @@ describe("Data mapper chain", () => {
     });
 
     it("should correctly return false when no mapper type found", () => {
-      const mapperRes = dataMapperChain.getMapperByConfig({
+      const mapperRes = dataMapperChain.createMapperByConfig({
         ident: "NONEXISTANT",
         params: {},
       });

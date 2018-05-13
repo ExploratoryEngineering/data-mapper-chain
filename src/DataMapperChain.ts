@@ -4,21 +4,42 @@ import { IDataValue, IMapper, IMapperConfig, IMapperType } from "./Typings";
 
 const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
 
+/**
+ * IDataMapperChainConfig interface for constructor of a DataMapperChain
+ */
 export interface IDataMapperChainConfig {
+  /**
+   * Optional initial mappers
+   */
   mappers?: IMapper[];
+  /**
+   * Optional name of the DataMapperChain
+   */
   name?: string;
 }
 
+/**
+ * Initial data mapping object for the DataMapperChain
+ */
 export interface IMapDataValue {
   name?: string;
   value?: number | string;
 }
 
+/**
+ * DataMapperChain is a simple collection of mappers and allows for
+ * serializing and loading configurations of mappers.
+ * [[include:data-mapper-tutorial.md]]
+ */
 export class DataMapperChain {
   mappers: IMapper[] = [];
   initialValue: IDataValue = { name: "Unnamed data", value: "" };
   name: string = "";
 
+  /**
+   * Create a new instance of a DataMapperChain.
+   * @param param0 DataMapperChain configuration object @see IDataMapperChainConfig
+   */
   constructor({
     mappers = [],
     name = "",
@@ -27,6 +48,10 @@ export class DataMapperChain {
     this.mappers = mappers;
   }
 
+  /**
+   * Serializes the DataMapperChain configuration including the mappers added to the chain.
+   * Returns a string representation of the configuration which has been run through JSON.stringify.
+   */
   serializeConfig(): string {
     return JSON.stringify({
       name: this.name,
@@ -36,13 +61,17 @@ export class DataMapperChain {
     });
   }
 
+  /**
+   * Loads a configuration which has been exported earlier by serializeConfig.
+   * @param configString Configuration string as exported from serializeConfig @see serializeConfig
+   */
   loadConfig(configString: string): DataMapperChain {
     const parsedConfig = JSON.parse(configString);
     this.name = parsedConfig.name;
     const mapperConfigs: IMapperConfig[] = parsedConfig.mappers;
 
     mapperConfigs.forEach((config) => {
-      const mapper = this.getMapperByConfig(config);
+      const mapper = this.createMapperByConfig(config);
       if (mapper) {
         this.addMapper(mapper);
       }
@@ -51,7 +80,11 @@ export class DataMapperChain {
     return this;
   }
 
-  getMapperByConfig(config: IMapperConfig): IMapper | false {
+  /**
+   * Create a IMapper based on the given IMapperConfig. If no mapper type is found the function returns false.
+   * @param config The IMapperConfig for the mapper
+   */
+  createMapperByConfig(config: IMapperConfig): IMapper | false {
     const mapperType = this.findMapperTypeById(config.ident);
     if (mapperType) {
       return new mapperType.entity(config.params);
@@ -60,10 +93,18 @@ export class DataMapperChain {
     return false;
   }
 
+  /**
+   * Add a mapper to the DataMapperChain.
+   * @param mapper Mapper to be added
+   */
   addMapper(mapper: IMapper) {
     this.mappers.push(mapper);
   }
 
+  /**
+   * Make a new mapper type available to the DataMapperChain. If the mapper type already exists it will be overwritten.
+   * @param mapperType Mappertype to be added
+   */
   addNewMapperType(mapperType: IMapperType) {
     const existingMapper = this.findMapperTypeById(mapperType.id);
     if (!existingMapper) {
@@ -77,12 +118,20 @@ export class DataMapperChain {
     }
   }
 
+  /**
+   * Helper function to find a mapper in available mappers.
+   * @param id Mapper ID as string
+   */
   findMapperTypeById(id: string) {
     return AVAILABLE_MAPPERS_TYPES.find((mapperType) => {
       return mapperType.id === id;
     });
   }
 
+  /**
+   * Uses the configured mappers for the DataMapperChain and maps the given data through the mappers.
+   * @param param0 Data to be mapped through the configured mappers
+   */
   mapData({ name = "Unnamed data", value = "" }: IMapDataValue = { name, value }) {
     this.initialValue = {
       name: name,
@@ -94,28 +143,56 @@ export class DataMapperChain {
     }, this.initialValue);
   }
 
-  // Explicit mappers to ease declarative mapping
-  base64(base64Config: IBase64Config): DataMapperChain {
+  /**
+   * Add a Base64 mapper
+   * @param base64Config Configuration for the Base64 mapper
+   */
+  base64(base64Config: IBase64Config = {}): DataMapperChain {
     this.addMapper(new Base64(base64Config));
     return this;
   }
-  chunk(chunkConfig: IChunkConfig): DataMapperChain {
+
+  /**
+   * Add a Chunk mapper
+   * @param chunkConfig Configuration for the Chunk mapper
+   */
+  chunk(chunkConfig: IChunkConfig = {}): DataMapperChain {
     this.addMapper(new Chunk(chunkConfig));
     return this;
   }
-  fromJson(fromJsonConfig: IFromJSONConfig) {
+
+  /**
+   * Add a FromJSON mapper
+   * @param fromJsonConfig Configuration for the FromJSON mapper
+   */
+  fromJson(fromJsonConfig: IFromJSONConfig = {}) {
     this.addMapper(new FromJSON(fromJsonConfig));
     return this;
   }
-  hexToFloat(hexToFloatConfig: IHexToFloatConfig) {
+
+  /**
+   * Add a HexToFloat mapper
+   * @param hexToFloatConfig Configuration for the HexToFloat mapper
+   */
+  hexToFloat(hexToFloatConfig: IHexToFloatConfig = {}) {
     this.addMapper(new HexToFloat(hexToFloatConfig));
     return this;
   }
-  hexToInt(hexToIntConfig: IHexToIntConfig) {
+
+  /**
+   * Add a HexToInt mapper
+   * @param hexToIntConfig Configuration for the HexToInt mapper
+   */
+  hexToInt(hexToIntConfig: IHexToIntConfig = {}) {
     this.addMapper(new HexToInt(hexToIntConfig));
     return this;
   }
-  offset(offsetConfig: IOffsetConfig) {
+
+  /**
+   * Add a Offset mapper
+   * @param offsetConfig Configuration for the Offset mapper
+   */
+  offset(offsetConfig: IOffsetConfig = {}) {
     this.addMapper(new Offset(offsetConfig));
     return this;
   }
