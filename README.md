@@ -31,7 +31,7 @@ Simple data mapper library meant to be run in browser to ease data transformatio
 ## Example: In ts
 You must first install the dependency
 
-```
+```bash
 npm i @exploratoryengineering/data-mapper-chain
 ``` 
 
