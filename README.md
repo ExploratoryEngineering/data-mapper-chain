@@ -49,7 +49,7 @@ const dataMapperChain = new DataMapperChain()
   })
   .hexToInt();
 
-// Create data object (conincidentally the value is CO2 ppm)
+// Create data object (coincidentally the value is CO2 ppm)
 const data: IDataValue = {
   name: "CO2 ppm",
   value: deviceData,
