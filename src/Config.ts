@@ -5,6 +5,9 @@ export { IHexToFloatConfig } from "./mappers/HexToFloat";
 export { IHexToIntConfig } from "./mappers/HexToInt";
 export { IOffsetConfig } from "./mappers/Offset";
 
+/**
+ * Endianness used as config parameter
+ */
 export enum Endianness {
   /**
    * Config parameter for defining little endianness
@@ -16,8 +19,17 @@ export enum Endianness {
   BIG_ENDIAN = "be",
 }
 
+/**
+ * Base64Action used as config parameter
+ */
 export enum Base64Action {
+  /**
+   * Config parameter for defining encoding in Base64
+   */
   ENCODE = "encode",
+  /**
+   * Config parameter for defining decoding in Base64
+   */
   DECODE = "decode",
 }
 
