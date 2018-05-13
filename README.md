@@ -15,8 +15,7 @@ Simple data mapper library meant to be run in browser to ease data transformatio
   ...
   <script src="https://cdn.jsdelivr.net/npm/@exploratoryengineering/data-mapper-chain"></script>
   <script>
-    var myMapper = new dmc
-      .DataMapperChain()
+    var myMapper = new dmc.create()
       .chunk({ start: 2, size: 2})
       .hexToInt();
 
