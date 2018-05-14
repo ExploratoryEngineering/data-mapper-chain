@@ -1,6 +1,6 @@
 {
   "name": "@exploratoryengineering/data-mapper-chain",
-  "version": "0.5.0",
+  "version": "0.5.1",
   "description": "Simple data mapper library meant to be run in browser to ease data transformation for IoT devices in JS",
   "main": "dist/data-mapper-chain.umd.js",
   "module": "dist/data-mapper-chain.es5.js",
