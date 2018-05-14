@@ -19,10 +19,7 @@ Simple data mapper library meant to be run in browser to ease data transformatio
       .chunk({ start: 2, size: 2})
       .hexToInt();
 
-    console.log(myMapper.mapData({
-      name: "My hex value",
-      value: "babe"
-    })); // Prints 190
+    console.log(myMapper.mapData("babe")); // Prints 190
   </script>
 </body>
 ```
@@ -38,9 +35,6 @@ npm i @exploratoryengineering/data-mapper-chain
 ```ts
 import { DataMapperChain, IDataValue } from "@exploratoryengineering/data-mapper-chain";
 
-// Raw data from device
-const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
-
 // Create a chain and add mappers
 const dataMapperChain = new DataMapperChain()
   .chunk({
@@ -49,14 +43,11 @@ const dataMapperChain = new DataMapperChain()
   })
   .hexToInt();
 
-// Create data object (coincidentally the value is CO2 ppm)
-const data: IDataValue = {
-  name: "CO2 ppm",
-  value: deviceData,
-};
+// Raw data from device
+const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
 
 // Run mapper
-dataMapperChain.mapData(data); // prints { name: 'CO2 ppm', value: 587 }
+dataMapperChain.mapData(deviceData); // prints 587
 
 ``` 
 
@@ -65,9 +56,6 @@ dataMapperChain.mapData(data); // prints { name: 'CO2 ppm', value: 587 }
 ```ts
 
 import { DataMapperChain, IDataValue, Mappers } from "@exploratoryengineering/data-mapper-chain";
-
-// Raw data from device
-const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
 
 /**
  * We know that on byte 25 there is 2 bytes of data which is a hex encoded uint16
@@ -94,14 +82,11 @@ const dataMapperChain = new DataMapperChain();
 dataMapperChain.addMapper(chunk);
 dataMapperChain.addMapper(hexToInt);
 
-// Create data object (conincidentally the value is CO2 ppm)
-const data: IDataValue = {
-  name: "CO2 ppm",
-  value: deviceData,
-};
+// Raw data from device
+const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
 
 // Run mapper
-dataMapperChain.mapData(data); // prints { name: 'CO2 ppm', value: 587 }
+dataMapperChain.mapData(deviceData); // prints 587
 
 
 ```

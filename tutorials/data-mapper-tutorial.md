@@ -27,7 +27,6 @@ const dataMapperChain = new DataMapperChain()
     size: 4,
   })
   .hexToInt();
-
 ```
 
 
@@ -42,12 +41,6 @@ const dataMapperChain = new DataMapperChain()
   .hexToInt();
 
 const deviceData: string = `47eee3803e3a8c713f8daf7242fc6666423c28c04111d84000024b00a3030c261b010b91d3`;
-// Create data object (coincidentally the value is CO2 ppm)
-const data: IDataValue = {
-  name: "CO2 ppm",
-  value: deviceData,
-};
-
 // Run mapper
-dataMapperChain.mapData(data); // prints { name: 'CO2 ppm', value: 587 }
+dataMapperChain.mapData(deviceData); // prints 587
 ```
