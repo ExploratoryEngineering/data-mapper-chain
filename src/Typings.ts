@@ -1,7 +1,4 @@
-export interface IDataValue {
-  name: string;
-  value: string | number;
-}
+export type IDataValue = string | number;
 
 export interface IMapperConfig {
   ident: string;

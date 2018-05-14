@@ -33,7 +33,7 @@ export interface IMapDataValue {
  */
 export class DataMapperChain {
   mappers: IMapper[] = [];
-  initialValue: IDataValue = { name: "Unnamed data", value: "" };
+  initialValue: IDataValue = "";
   name: string = "";
 
   /**
@@ -132,11 +132,8 @@ export class DataMapperChain {
    * Uses the configured mappers for the DataMapperChain and maps the given data through the mappers.
    * @param param0 Data to be mapped through the configured mappers
    */
-  mapData({ name = "Unnamed data", value = "" }: IMapDataValue = { name, value }) {
-    this.initialValue = {
-      name: name,
-      value: value,
-    };
+  mapData(value: IDataValue = "") {
+    this.initialValue = value;
 
     return this.mappers.reduce((curr, mapper, idx) => {
       return mapper.transform(curr);

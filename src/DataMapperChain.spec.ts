@@ -12,11 +12,7 @@ class MapperMock implements IMapper {
   }
 
   transform(value: IDataValue): IDataValue {
-    return {
-      ...value, ...{
-        name: "MOCK WAS HERE",
-      },
-    };
+    return "MOCK WAS HERE";
   }
 
   config(): IMapperConfig {
@@ -139,10 +135,7 @@ describe("Data mapper chain", () => {
 
   describe("Data transformation", () => {
     it("should work as intended with no mappers", () => {
-      const inputObj = {
-        name: "name",
-        value: "babe",
-      };
+      const inputObj = "babe";
 
       const transformRes = dataMapperChain.mapData(inputObj);
 
@@ -151,34 +144,16 @@ describe("Data mapper chain", () => {
 
     it("should allow for empty input in map data", () => {
       const transformRes = dataMapperChain.mapData();
-      expect(transformRes).toEqual({
-        name: "Unnamed data",
-        value: "",
-      });
-    });
-
-    it("should allow for partial input in map data", () => {
-      const transformRes = dataMapperChain.mapData({
-        value: "my value",
-      });
-      expect(transformRes).toEqual({
-        name: "Unnamed data",
-        value: "my value",
-      });
+      expect(transformRes).toEqual("");
     });
 
     it("should correctly run transform on added mappers", () => {
-      const inputObj = {
-        name: "name",
-        value: "babe",
-      };
+      const inputObj = "babe";
+
       dataMapperChain.addMapper(new MapperMock());
       const transformRes = dataMapperChain.mapData(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "MOCK WAS HERE",
-        value: "babe",
-      });
+      expect(transformRes).toEqual("MOCK WAS HERE");
     });
   });
 

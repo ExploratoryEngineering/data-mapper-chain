@@ -13,28 +13,16 @@ describe("Base64 mapper", () => {
   describe("Base64 encoding/decoding", () => {
     it("should correctly encode a string given", () => {
       base64.action = Base64Action.ENCODE;
-      const transformRes = base64.transform({
-        name: "data",
-        value: helloWorldString,
-      });
+      const transformRes = base64.transform(helloWorldString);
 
-      expect(transformRes).toEqual({
-        name: "data",
-        value: helloWorldBase64,
-      });
+      expect(transformRes).toEqual(helloWorldBase64);
     });
 
     it("should correctly decode a base 64 string given", () => {
       base64.action = Base64Action.DECODE;
-      const transformRes = base64.transform({
-        name: "data",
-        value: helloWorldBase64,
-      });
+      const transformRes = base64.transform(helloWorldBase64);
 
-      expect(transformRes).toEqual({
-        name: "data",
-        value: helloWorldString,
-      });
+      expect(transformRes).toEqual(helloWorldString);
     });
   });
 
@@ -55,10 +43,7 @@ describe("Base64 mapper", () => {
 
   describe("Invalid input", () => {
     it("should correctly return the given object if no value is present", () => {
-      const inputObj = {
-        name: "name",
-        value: "",
-      };
+      const inputObj = "";
 
       const transformRes = base64.transform(inputObj);
 
@@ -66,10 +51,7 @@ describe("Base64 mapper", () => {
     });
 
     it("should correctly return value if base 64 decoding fails", () => {
-      const inputObj = {
-        name: "name",
-        value: "æøå",
-      };
+      const inputObj = "æøå";
 
       const transformRes = base64.transform(inputObj);
 

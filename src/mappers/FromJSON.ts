@@ -27,11 +27,11 @@ export class FromJSON implements IMapper {
   }
 
   transform(data: IDataValue): IDataValue {
-    if (!data.value) {
+    if (!data) {
       return data;
     }
 
-    const resString = data.value.toString();
+    const resString = data.toString();
     let element = {};
 
     try {
@@ -68,8 +68,6 @@ export class FromJSON implements IMapper {
       res = JSON.stringify(tempEl);
     }
 
-    return {
-      ...data, ...{ value: res },
-    };
+    return res;
   }
 }

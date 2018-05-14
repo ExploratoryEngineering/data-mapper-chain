@@ -28,24 +28,16 @@ export class Offset implements IMapper {
   transform(data: IDataValue): IDataValue {
     let parsedNumber: number;
 
-    if (typeof data.value !== "number") {
-      parsedNumber = parseInt(data.value, 10);
+    if (typeof data !== "number") {
+      parsedNumber = parseInt(data, 10);
     } else {
-      parsedNumber = data.value;
+      parsedNumber = data;
     }
 
     if (Number.isNaN(parsedNumber)) {
-      return {
-        ...data, ...{
-          value: 0,
-        },
-      };
+      return 0;
     }
 
-    return {
-      ...data, ...{
-        value: parsedNumber + this.offset,
-      },
-    };
+    return parsedNumber + this.offset;
   }
 }

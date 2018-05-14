@@ -10,51 +10,33 @@ describe("HexToInt mapper", () => {
     });
 
     it("should correctly parse hex to int", () => {
-      const inputObj = {
-        name: "name",
-        value: "babe",
-      };
+      const inputObj = "babe";
 
       hexToInt.signed = false;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 47806,
-      });
+      expect(transformRes).toEqual(47806);
     });
 
     it("should correctly parse signed hex to int", () => {
-      const inputObj = {
-        name: "name",
-        value: "babe",
-      };
+      const inputObj = "babe";
 
       hexToInt.signed = true;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: -17730,
-      });
+      expect(transformRes).toEqual(-17730);
     });
 
     it("should allow for prepended 0x on value", () => {
-      const inputObj = {
-        name: "name",
-        value: "0xbabe",
-      };
+      const inputObj = "0xbabe";
 
       hexToInt.signed = false;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 47806,
-      });
+      expect(transformRes).toEqual(47806);
     });
   });
 
@@ -64,51 +46,33 @@ describe("HexToInt mapper", () => {
     });
 
     it("should correctly parse hex to int", () => {
-      const inputObj = {
-        name: "name",
-        value: "babe",
-      };
+      const inputObj = "babe";
 
       hexToInt.signed = false;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 48826,
-      });
+      expect(transformRes).toEqual(48826);
     });
 
     it("should correctly parse signed hex to int", () => {
-      const inputObj = {
-        name: "name",
-        value: "babe",
-      };
+      const inputObj = "babe";
 
       hexToInt.signed = true;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: -16710,
-      });
+      expect(transformRes).toEqual(-16710);
     });
 
     it("should allow for prepended 0x on value", () => {
-      const inputObj = {
-        name: "name",
-        value: "0xbabe",
-      };
+      const inputObj = "0xbabe";
 
       hexToInt.signed = false;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 48826,
-      });
+      expect(transformRes).toEqual(48826);
     });
   });
 
@@ -135,33 +99,21 @@ describe("HexToInt mapper", () => {
     });
 
     it("should return 0 upon empty value input", () => {
-      const inputObj = {
-        name: "Undef value",
-        value: undefined,
-      };
+      const inputObj = undefined;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "Undef value",
-        value: 0,
-      });
+      expect(transformRes).toEqual(0);
     });
 
     it("should return 0 for invalid input", () => {
-      const inputObj = {
-        name: "name",
-        value: "gege",
-      };
+      const inputObj = "gege";
 
       hexToInt.signed = true;
 
       const transformRes = hexToInt.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 0,
-      });
+      expect(transformRes).toEqual(0);
     });
   });
 });

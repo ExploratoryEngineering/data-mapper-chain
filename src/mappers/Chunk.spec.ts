@@ -53,45 +53,27 @@ describe("Chunk mapper", () => {
       chunk.start = 0;
       chunk.size = 2;
 
-      const transformRes = chunk.transform({
-        name: "name",
-        value: "abba",
-      });
+      const transformRes = chunk.transform("abba");
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: "ab",
-      });
+      expect(transformRes).toEqual("ab");
     });
 
     it("should correctly chunk part of a number", () => {
       chunk.start = 0;
       chunk.size = 2;
 
-      const transformRes = chunk.transform({
-        name: "name",
-        value: 1234,
-      });
+      const transformRes = chunk.transform(1234);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: "12",
-      });
+      expect(transformRes).toEqual("12");
     });
 
     it("should correctly return an empty string if the index is out of bounds", () => {
       chunk.start = 4;
       chunk.size = 2;
 
-      const transformRes = chunk.transform({
-        name: "name",
-        value: "abba",
-      });
+      const transformRes = chunk.transform("abba");
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: "",
-      });
+      expect(transformRes).toEqual("");
     });
   });
 });

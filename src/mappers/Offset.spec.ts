@@ -9,51 +9,33 @@ describe("Offset data mapper", () => {
 
   describe("Offsetting", () => {
     it("should correctly offset value", () => {
-      const inputObj = {
-        name: "name",
-        value: 0,
-      };
+      const inputObj = 0;
 
       offset.offset = 15;
 
       const transformRes = offset.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 15,
-      });
+      expect(transformRes).toEqual(15);
     });
 
     it("should correctly offset a negative value", () => {
-      const inputObj = {
-        name: "name",
-        value: 0,
-      };
+      const inputObj = 0;
 
       offset.offset = -15;
 
       const transformRes = offset.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: -15,
-      });
+      expect(transformRes).toEqual(-15);
     });
 
     it("should allow for string input", () => {
-      const inputObj = {
-        name: "name",
-        value: "5",
-      };
+      const inputObj = "5";
 
       offset.offset = -15;
 
       const transformRes = offset.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: -10,
-      });
+      expect(transformRes).toEqual(-10);
     });
   });
 
@@ -74,35 +56,23 @@ describe("Offset data mapper", () => {
 
   describe("Invalid input", () => {
     it("should return 0 for NaN input", () => {
-      const inputObj = {
-        name: "name",
-        value: NaN,
-      };
+      const inputObj = NaN;
 
       offset.offset = 1;
 
       const transformRes = offset.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 0,
-      });
+      expect(transformRes).toEqual(0);
     });
 
     it("should return 0 for invalid input", () => {
-      const inputObj = {
-        name: "name",
-        value: "æøå",
-      };
+      const inputObj = "æøå";
 
       offset.offset = 1;
 
       const transformRes = offset.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: 0,
-      });
+      expect(transformRes).toEqual(0);
     });
   });
 });

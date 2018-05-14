@@ -34,22 +34,14 @@ export class HexToInt implements IMapper {
   }
 
   transform(data: IDataValue): IDataValue {
-    if (!data.value) {
-      return {
-        ...data, ... {
-          value: 0,
-        },
-      };
+    if (!data) {
+      return 0;
     }
 
-    let resString: string = data.value.toString();
+    let resString: string = data.toString();
 
     if (!this.hexRegExp.test(resString)) {
-      return {
-        ...data, ...{
-          value: 0,
-        },
-      };
+      return 0;
     }
 
     if (this.endianness === Endianness.LITTLE_ENDIAN) {
@@ -77,8 +69,6 @@ export class HexToInt implements IMapper {
       }
     }
 
-    return {
-      ...data, ...{ value: resValue },
-    };
+    return resValue;
   }
 }

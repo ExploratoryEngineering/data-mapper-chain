@@ -29,11 +29,11 @@ export class Base64 implements IMapper {
   }
 
   transform(data: IDataValue): IDataValue {
-    if (!data.value) {
+    if (!data) {
       return data;
     }
 
-    let resString = data.value.toString();
+    let resString = data.toString();
 
     if (this.action === Base64Action.DECODE) {
       try {
@@ -50,8 +50,6 @@ export class Base64 implements IMapper {
       }
     }
 
-    return {
-      ...data, ...{ value: resString },
-    };
+    return resString;
   }
 }

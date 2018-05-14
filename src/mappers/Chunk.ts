@@ -33,10 +33,6 @@ export class Chunk implements IMapper {
   }
 
   transform(data: IDataValue): IDataValue {
-    return {
-      ...data, ...{
-        value: data.value.toString().substring(this.start, this.start + this.size),
-      },
-    };
+    return data.toString().substring(this.start, this.start + this.size);
   }
 }

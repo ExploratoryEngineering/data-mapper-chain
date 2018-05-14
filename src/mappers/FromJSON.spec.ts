@@ -24,78 +24,48 @@ describe("FromJSON mapper", () => {
 
   describe("JSON decoding", () => {
     it("should correctly decode and fetch property of a simple test obj", () => {
-      const inputObj = {
-        name: "name",
-        value: JSON.stringify(simpleTestObject),
-      };
+      const inputObj = JSON.stringify(simpleTestObject);
 
       fromJSON.propertyString = "test";
       const transformRes = fromJSON.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: "simpleTestObjectValue",
-      });
+      expect(transformRes).toEqual("simpleTestObjectValue");
     });
 
     it("should correctly return the whole object if no propertyString", () => {
-      const inputObj = {
-        name: "name",
-        value: JSON.stringify(simpleTestObject),
-      };
+      const inputObj = JSON.stringify(simpleTestObject);
 
       fromJSON.propertyString = "";
       const transformRes = fromJSON.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: JSON.stringify(simpleTestObject),
-      });
+      expect(transformRes).toEqual(JSON.stringify(simpleTestObject));
     });
 
     it("should correctly return the nested object upon asking for top level property", () => {
-      const inputObj = {
-        name: "name",
-        value: JSON.stringify(multiLayeredTestObject),
-      };
+      const inputObj = JSON.stringify(multiLayeredTestObject);
 
       fromJSON.propertyString = "layer1test";
       const transformRes = fromJSON.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: JSON.stringify(simpleTestObject),
-      });
+      expect(transformRes).toEqual(JSON.stringify(simpleTestObject));
     });
 
     it("should correctly drill down in object", () => {
-      const inputObj = {
-        name: "name",
-        value: JSON.stringify(multiLayeredTestObject),
-      };
+      const inputObj = JSON.stringify(multiLayeredTestObject);
 
       fromJSON.propertyString = "layer2test.layer2";
       const transformRes = fromJSON.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: "multiLayeredTestObjectValue",
-      });
+      expect(transformRes).toEqual("multiLayeredTestObjectValue");
     });
 
     it("should correctly drill down in array", () => {
-      const inputObj = {
-        name: "name",
-        value: JSON.stringify(arrayTestObject),
-      };
+      const inputObj = JSON.stringify(arrayTestObject);
 
       fromJSON.propertyString = "myArray.0";
       const transformRes = fromJSON.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: "arrayTestObjectValue",
-      });
+      expect(transformRes).toEqual("arrayTestObjectValue");
     });
   });
 
@@ -116,40 +86,25 @@ describe("FromJSON mapper", () => {
 
   describe("Invalid input", () => {
     it("should return empty string on nonexistant property", () => {
-      const inputObj = {
-        name: "name",
-        value: JSON.stringify(simpleTestObject),
-      };
+      const inputObj = JSON.stringify(simpleTestObject);
 
       fromJSON.propertyString = "nonExistantProperty";
       const transformRes = fromJSON.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: "",
-      });
+      expect(transformRes).toEqual("");
     });
 
     it("should interpret trailing dot as no action", () => {
-      const inputObj = {
-        name: "name",
-        value: JSON.stringify(arrayTestObject),
-      };
+      const inputObj = JSON.stringify(arrayTestObject);
 
       fromJSON.propertyString = "myArray.";
       const transformRes = fromJSON.transform(inputObj);
 
-      expect(transformRes).toEqual({
-        name: "name",
-        value: JSON.stringify(arrayTestObject.myArray),
-      });
+      expect(transformRes).toEqual(JSON.stringify(arrayTestObject.myArray));
     });
 
     it("should correctly return the given object if no value is present", () => {
-      const inputObj = {
-        name: "name",
-        value: "",
-      };
+      const inputObj = "";
 
       const transformRes = fromJSON.transform(inputObj);
 
@@ -157,10 +112,7 @@ describe("FromJSON mapper", () => {
     });
 
     it("should correctly return the given object if it's not JSON parsable", () => {
-      const inputObj = {
-        name: "name",
-        value: "{æøå}",
-      };
+      const inputObj = "{æøå}";
 
       const transformRes = fromJSON.transform(inputObj);
 

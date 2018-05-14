@@ -28,22 +28,14 @@ export class HexToFloat implements IMapper {
   }
 
   transform(data: IDataValue): IDataValue {
-    if (!data.value) {
-      return {
-        ...data, ... {
-          value: 0,
-        },
-      };
+    if (!data) {
+      return 0;
     }
 
-    let resString: string = data.value.toString();
+    let resString: string = data.toString();
 
     if (!this.hexRegExp.test(resString)) {
-      return {
-        ...data, ...{
-          value: 0,
-        },
-      };
+      return 0;
     }
 
     if (resString.includes("0x")) {
@@ -63,8 +55,6 @@ export class HexToFloat implements IMapper {
     const exponent = (hexValue >> 23) & 0xFF;
     const resValue: number = signed * (hexValue & 0x7fffff | 0x800000) * 1.0 / Math.pow(2, 23) * Math.pow(2, (exponent - 127));
 
-    return {
-      ...data, ...{ value: resValue },
-    };
+    return resValue;
   }
 }
