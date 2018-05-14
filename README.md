@@ -33,7 +33,7 @@ npm i @exploratoryengineering/data-mapper-chain
 
 ### Using shorthand
 ```ts
-import { DataMapperChain, IDataValue } from "@exploratoryengineering/data-mapper-chain";
+import { DataMapperChain } from "@exploratoryengineering/data-mapper-chain";
 
 // Create a chain and add mappers
 const dataMapperChain = new DataMapperChain()
@@ -55,7 +55,7 @@ dataMapperChain.mapData(deviceData); // prints 587
 ### Instanciating mappers directly
 ```ts
 
-import { DataMapperChain, IDataValue, Mappers } from "@exploratoryengineering/data-mapper-chain";
+import { DataMapperChain, Mappers } from "@exploratoryengineering/data-mapper-chain";
 
 /**
  * We know that on byte 25 there is 2 bytes of data which is a hex encoded uint16
