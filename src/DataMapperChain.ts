@@ -38,7 +38,7 @@ export class DataMapperChain {
 
   /**
    * Create a new instance of a DataMapperChain.
-   * @param param0 DataMapperChain configuration object @see IDataMapperChainConfig
+   * @param __namedParameters DataMapperChain configuration object
    */
   constructor({
     mappers = [],
