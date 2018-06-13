@@ -34,7 +34,7 @@ export class Offset implements IMapper {
       parsedNumber = data;
     }
 
-    if (Number.isNaN(parsedNumber)) {
+    if (Number.isNaN(parsedNumber) || typeof this.offset !== "number") {
       return 0;
     }
 
