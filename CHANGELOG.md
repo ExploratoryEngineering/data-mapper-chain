@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.2"></a>
+## [0.5.2](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.5.1...v0.5.2) (2018-06-13)
+
+
+### Bug Fixes
+
+* **hextofloat:** add missing name to hex to float ([3ecc365](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/3ecc365))
+* **offset:** add check for offset as number ([244508e](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/244508e))
+
+
+
 <a name="0.5.1"></a>
 ## [0.5.1](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.5.0...v0.5.1) (2018-05-14)
 
