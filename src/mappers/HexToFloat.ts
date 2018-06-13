@@ -8,6 +8,7 @@ export interface IHexToFloatConfig {
 export class HexToFloat implements IMapper {
   static ident: string = "HEXTOFLOAT";
   static description: string = "Hex to float";
+  name: string = "Hex to float";
 
   endianness: Endianness = Endianness.BIG_ENDIAN;
   hexRegExp: RegExp = new RegExp(/^[a-fxA-F0-9_]+$/);
