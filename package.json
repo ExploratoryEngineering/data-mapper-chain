@@ -15,7 +15,6 @@
   "scripts": {
     "prebuild": "npm t && del-cli dist",
     "build": "tsc --module commonjs && rollup -c rollup.config.ts && typedoc --out docs --target es6 --includes tutorials --theme minimal --mode file src --exclude \"**/*.spec.ts\"",
-    "commitmsg": "validate-commit-msg",
     "prepublish": "npm run build",
     "publish-docs": "ts-node tools/publishToGhPages",
     "release": "standard-version --silent",
