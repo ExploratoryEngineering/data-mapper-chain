@@ -99,7 +99,7 @@ describe("HexToInt mapper", () => {
     });
 
     it("should return 0 upon empty value input", () => {
-      const inputObj = undefined;
+      const inputObj = undefined as any;
 
       const transformRes = hexToInt.transform(inputObj);
 

@@ -84,7 +84,7 @@ describe("Hex to float mapper", () => {
 
   describe("Invalid input", () => {
     it("should return 0 upon empty value input", () => {
-      const inputObj = undefined;
+      const inputObj = undefined as any;
 
       const transformRes = hexToFloat.transform(inputObj);
 
