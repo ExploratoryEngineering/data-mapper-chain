@@ -1,7 +1,7 @@
 {
   "globals": {
     "ts-jest": {
-      "tsConfigFile": "tsconfig.jest.json",
+      "tsConfig": "tsconfig.jest.json",
       "babelConfig": {
         "plugins": [
           "transform-es2015-modules-commonjs"
@@ -20,7 +20,7 @@
     "src"
   ],
   "transform": {
-    "^.+\\.(ts|tsx)$": "<rootDir>/node_modules/ts-jest/preprocessor.js"
+    "^.+\\.(ts|tsx)$": "ts-jest"
   },
   "testRegex": "\\.spec\\.(ts|js)$",
   "collectCoverage": true,
