@@ -5,7 +5,7 @@ export interface IFromJSONConfig {
 }
 
 export class FromJSON implements IMapper {
-  static ident: string = "FROMJSON";
+  static id: string = "FROMJSON";
   static description: string = "JSON";
   name: string = "JSON";
 
@@ -19,7 +19,7 @@ export class FromJSON implements IMapper {
 
   config(): IMapperConfig {
     return {
-      ident: FromJSON.ident,
+      id: FromJSON.id,
       params: {
         propertyString: this.propertyString,
       },

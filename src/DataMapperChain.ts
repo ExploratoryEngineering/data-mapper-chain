@@ -85,7 +85,7 @@ export class DataMapperChain {
    * @param config The IMapperConfig for the mapper
    */
   createMapperByConfig(config: IMapperConfig): IMapper | false {
-    const mapperType = this.findMapperTypeById(config.ident);
+    const mapperType = this.findMapperTypeById(config.id);
     if (mapperType) {
       return new mapperType.entity(config.params);
     }

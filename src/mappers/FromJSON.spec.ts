@@ -76,7 +76,7 @@ describe("FromJSON mapper", () => {
       });
 
       expect(simpleFromJson.config()).toEqual({
-        ident: "FROMJSON",
+        id: "FROMJSON",
         params: {
           propertyString: "simple",
         },

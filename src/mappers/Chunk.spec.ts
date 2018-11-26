@@ -39,7 +39,7 @@ describe("Chunk mapper", () => {
       chunk.size = 6;
 
       expect(chunk.config()).toEqual({
-        ident: Chunk.ident,
+        id: Chunk.id,
         params: {
           start: 2,
           size: 6,

@@ -1,5 +1,5 @@
 import { DataMapperChain } from "./DataMapperChain";
-import { AVAILABLE_MAPPERS_TYPES, Mappers } from "./Mappers";
+import { Mappers } from "./Mappers";
 import { IDataValue, IMapper, IMapperConfig } from "./Typings";
 
 const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
@@ -17,7 +17,7 @@ class MapperMock implements IMapper {
 
   config(): IMapperConfig {
     return {
-      ident: "MOCK",
+      id: "MOCK",
       params: {
         p1: 1,
         p2: "2",
@@ -70,18 +70,18 @@ describe("Data mapper chain", () => {
       dataMapperChain.mappers = [];
 
       const serializedConfig = dataMapperChain.serializeConfig();
-      expect(serializedConfig).toBe("{\"name\":\"Test\",\"mappers\":[]}");
+      expect(serializedConfig).toBe(`{"name":"Test","mappers":[]}`);
     });
 
     it("should correctly serialize with mapper", () => {
       dataMapperChain.addMapper(new MapperMock());
 
       const serializedConfig = dataMapperChain.serializeConfig();
-      expect(serializedConfig).toBe("{\"name\":\"\",\"mappers\":[{\"ident\":\"MOCK\",\"params\":{\"p1\":1,\"p2\":\"2\"}}]}");
+      expect(serializedConfig).toBe(`{"name":"","mappers":[{"id":"MOCK","params":{"p1":1,"p2":"2"}}]}`);
     });
 
     it("should correctly deserialize with no mappers", () => {
-      const serializedConfig = "{\"name\":\"Test\",\"mappers\":[]}";
+      const serializedConfig = `{"name":"Test","mappers":[]}`;
 
       dataMapperChain.loadConfig(serializedConfig);
 
@@ -89,7 +89,7 @@ describe("Data mapper chain", () => {
     });
 
     it("should correctly deserialize with mapper and corresponding config", () => {
-      const serializedConfig = "{\"name\":\"Test\",\"mappers\":[{\"ident\":\"MOCK\",\"params\":{\"p1\":1,\"p2\":\"2\"}}]}";
+      const serializedConfig = `{"name":"Test","mappers":[{"id":"MOCK","params":{"p1":1,"p2":"2"}}]}`;
 
       dataMapperChain.loadConfig(serializedConfig);
 
@@ -115,7 +115,7 @@ describe("Data mapper chain", () => {
 
     it("should correctly return mapper initiated with params if type is present", () => {
       const mapperRes = dataMapperChain.createMapperByConfig({
-        ident: "MOCK",
+        id: "MOCK",
         params: "params",
       });
 
@@ -125,7 +125,7 @@ describe("Data mapper chain", () => {
 
     it("should correctly return false when no mapper type found", () => {
       const mapperRes = dataMapperChain.createMapperByConfig({
-        ident: "NONEXISTANT",
+        id: "NONEXISTANT",
         params: {},
       });
 
@@ -197,7 +197,7 @@ describe("Data mapper chain", () => {
 
   describe("Invalid input", () => {
     it("should correctly ignore serialized unknown mappers", () => {
-      const serializedConfig = "{\"name\":\"Test\",\"mappers\":[{\"ident\":\"UNKNOWNMAPPER\",\"params\":{\"p1\":1,\"p2\":\"2\"}}]}";
+      const serializedConfig = `{"name":"Test","mappers":[{"id":"UNKNOWNMAPPER","params":{"p1":1,"p2":"2"}}]}`;
       dataMapperChain.loadConfig(serializedConfig);
 
       expect(dataMapperChain.name).toBe("Test");

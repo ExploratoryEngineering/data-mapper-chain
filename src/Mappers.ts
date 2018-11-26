@@ -23,27 +23,27 @@ export const Mappers = {
 };
 
 export let AVAILABLE_MAPPERS_TYPES: IMapperType[] = [{
-  id: Chunk.ident,
+  id: Chunk.id,
   value: Chunk.description,
   entity: Chunk,
 }, {
-  id: HexToFloat.ident,
+  id: HexToFloat.id,
   value: HexToFloat.description,
   entity: HexToFloat,
 }, {
-  id: HexToInt.ident,
+  id: HexToInt.id,
   value: HexToInt.description,
   entity: HexToInt,
 }, {
-  id: Offset.ident,
+  id: Offset.id,
   value: Offset.description,
   entity: Offset,
 }, {
-  id: Base64.ident,
+  id: Base64.id,
   value: Base64.description,
   entity: Base64,
 }, {
-  id: FromJSON.ident,
+  id: FromJSON.id,
   value: FromJSON.description,
   entity: FromJSON,
 }];

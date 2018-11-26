@@ -6,7 +6,7 @@ export interface IBase64Config {
 }
 
 export class Base64 implements IMapper {
-  static ident: string = "BASE64";
+  static id: string = "BASE64";
   static description: string = "Base64";
 
   name: string = "Base64";
@@ -21,7 +21,7 @@ export class Base64 implements IMapper {
 
   config(): IMapperConfig {
     return {
-      ident: Base64.ident,
+      id: Base64.id,
       params: {
         action: this.action,
       },

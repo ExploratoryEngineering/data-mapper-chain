@@ -6,7 +6,7 @@ export interface IHexToFloatConfig {
 }
 
 export class HexToFloat implements IMapper {
-  static ident: string = "HEXTOFLOAT";
+  static id: string = "HEXTOFLOAT";
   static description: string = "Hex to float";
   name: string = "Hex to float";
 
@@ -21,7 +21,7 @@ export class HexToFloat implements IMapper {
 
   config(): IMapperConfig {
     return {
-      ident: HexToFloat.ident,
+      id: HexToFloat.id,
       params: {
         endianness: this.endianness,
       },

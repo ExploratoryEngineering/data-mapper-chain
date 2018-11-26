@@ -32,7 +32,7 @@ describe("Hex to float mapper", () => {
       });
 
       expect(hexToFloatWithConfig.config()).toEqual({
-        ident: "HEXTOFLOAT",
+        id: "HEXTOFLOAT",
         params: {
           endianness: Endianness.LITTLE_ENDIAN,
         },

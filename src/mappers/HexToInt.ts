@@ -7,7 +7,7 @@ export interface IHexToIntConfig {
 }
 
 export class HexToInt implements IMapper {
-  static ident: string = "HEXTOINT";
+  static id: string = "HEXTOINT";
   static description: string = "Hex to int";
   name: string = "Hex to int";
 
@@ -25,7 +25,7 @@ export class HexToInt implements IMapper {
 
   config(): IMapperConfig {
     return {
-      ident: HexToInt.ident,
+      id: HexToInt.id,
       params: {
         endianness: this.endianness,
         signed: this.signed,

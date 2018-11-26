@@ -46,7 +46,7 @@ describe("Offset data mapper", () => {
       });
 
       expect(simpleOffset.config()).toEqual({
-        ident: "OFFSET",
+        id: "OFFSET",
         params: {
           offset: 25,
         },

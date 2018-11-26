@@ -84,7 +84,7 @@ describe("HexToInt mapper", () => {
       });
 
       expect(hexToIntWithConfig.config()).toEqual({
-        ident: "HEXTOINT",
+        id: "HEXTOINT",
         params: {
           endianness: Endianness.LITTLE_ENDIAN,
           signed: true,

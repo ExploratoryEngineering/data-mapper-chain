@@ -5,7 +5,7 @@ export interface IOffsetConfig {
 }
 
 export class Offset implements IMapper {
-  static ident: string = "OFFSET";
+  static id: string = "OFFSET";
   static description: string = "Offset number";
   name: string = "Offset";
   offset: number = 0;
@@ -18,7 +18,7 @@ export class Offset implements IMapper {
 
   config(): IMapperConfig {
     return {
-      ident: Offset.ident,
+      id: Offset.id,
       params: {
         offset: this.offset,
       },

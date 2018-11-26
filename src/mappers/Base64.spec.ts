@@ -33,7 +33,7 @@ describe("Base64 mapper", () => {
       });
 
       expect(base64encode.config()).toEqual({
-        ident: "BASE64",
+        id: "BASE64",
         params: {
           action: Base64Action.ENCODE,
         },

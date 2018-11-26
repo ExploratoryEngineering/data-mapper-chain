@@ -8,7 +8,7 @@ export interface IChunkConfig {
 }
 
 export class Chunk implements IMapper {
-  static ident: string = "CHUNK";
+  static id: string = "CHUNK";
   static description: string = "Chunk";
   name: string = "Chunk";
   start: number = 0;
@@ -24,7 +24,7 @@ export class Chunk implements IMapper {
 
   config(): IMapperConfig {
     return {
-      ident: Chunk.ident,
+      id: Chunk.id,
       params: {
         start: this.start,
         size: this.size,
