@@ -1,11 +1,12 @@
 import { DataMapperChain } from "./DataMapperChain";
 import { Mappers } from "./Mappers";
-import { IDataValue, IMapper, IMapperConfig } from "./Typings";
+import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./Typings";
 
 const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
 
 class MapperMock implements IMapper {
   initParams: any = {};
+  outputType: IOutputType = IOutputType.number;
 
   constructor(params = {}) {
     this.initParams = params;

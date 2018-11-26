@@ -1,4 +1,4 @@
-import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
+import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 
 export interface IOffsetConfig {
   offset?: number | string;
@@ -7,7 +7,10 @@ export interface IOffsetConfig {
 export class Offset implements IMapper {
   static id: string = "OFFSET";
   static description: string = "Offset number";
+
   name: string = "Offset";
+  outputType: IOutputType = IOutputType.number;
+
   offset: number = 0;
 
   constructor({

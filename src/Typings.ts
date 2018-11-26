@@ -1,4 +1,9 @@
 export type IDataValue = string | number;
+export enum IOutputType {
+  "string",
+  "number",
+  "array",
+}
 
 export interface IMapperConfig {
   id: string;
@@ -6,6 +11,7 @@ export interface IMapperConfig {
 }
 
 export interface IMapper {
+  outputType: IOutputType;
   transform(data: IDataValue): IDataValue;
   config(): IMapperConfig;
 }

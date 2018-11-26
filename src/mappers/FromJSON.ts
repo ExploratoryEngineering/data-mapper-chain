@@ -1,4 +1,4 @@
-import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
+import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 
 export interface IFromJSONConfig {
   propertyString?: string;
@@ -7,7 +7,9 @@ export interface IFromJSONConfig {
 export class FromJSON implements IMapper {
   static id: string = "FROMJSON";
   static description: string = "JSON";
+
   name: string = "JSON";
+  outputType: IOutputType = IOutputType.string;
 
   propertyString: string = "";
 

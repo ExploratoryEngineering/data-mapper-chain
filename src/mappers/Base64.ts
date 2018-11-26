@@ -1,5 +1,5 @@
 import { Base64Action } from "../Config";
-import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
+import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 
 export interface IBase64Config {
   action?: Base64Action;
@@ -10,6 +10,7 @@ export class Base64 implements IMapper {
   static description: string = "Base64";
 
   name: string = "Base64";
+  outputType: IOutputType = IOutputType.string;
 
   action: Base64Action = Base64Action.DECODE;
 

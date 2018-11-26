@@ -1,4 +1,4 @@
-import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
+import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 
 export interface IChunkConfig {
   // Start-index of chunk
@@ -10,7 +10,10 @@ export interface IChunkConfig {
 export class Chunk implements IMapper {
   static id: string = "CHUNK";
   static description: string = "Chunk";
+
   name: string = "Chunk";
+  outputType: IOutputType = IOutputType.string;
+
   start: number = 0;
   size: number = 4;
 

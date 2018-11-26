@@ -1,5 +1,5 @@
 import { Endianness } from "../Config";
-import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
+import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 
 export interface IHexToFloatConfig {
   endianness?: Endianness;
@@ -8,7 +8,9 @@ export interface IHexToFloatConfig {
 export class HexToFloat implements IMapper {
   static id: string = "HEXTOFLOAT";
   static description: string = "Hex to float";
+
   name: string = "Hex to float";
+  outputType: IOutputType = IOutputType.number;
 
   endianness: Endianness = Endianness.BIG_ENDIAN;
   hexRegExp: RegExp = new RegExp(/^[a-fxA-F0-9_]+$/);

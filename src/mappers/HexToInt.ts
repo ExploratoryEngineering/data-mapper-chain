@@ -1,5 +1,5 @@
 import { Endianness } from "../Config";
-import { IDataValue, IMapper, IMapperConfig } from "./../Typings";
+import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 
 export interface IHexToIntConfig {
   endianness?: Endianness;
@@ -9,7 +9,9 @@ export interface IHexToIntConfig {
 export class HexToInt implements IMapper {
   static id: string = "HEXTOINT";
   static description: string = "Hex to int";
+
   name: string = "Hex to int";
+  outputType: IOutputType = IOutputType.number;
 
   endianness: Endianness = Endianness.BIG_ENDIAN;
   signed: boolean = false;
