@@ -23,6 +23,7 @@
     "release:major": "npm run release -- --release-as major",
     "test": "npm run test:unit && npm run test:tslint",
     "test:unit": "del-cli test/coverage-jest && jest --config jest.config.json --forceExit",
+    "test:unit:watch": "jest --config jest.config.json --watch",
     "test:tslint": "tslint \"src/**/*.ts\" -c tslint.json"
   },
   "keywords": [
