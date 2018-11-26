@@ -16,6 +16,11 @@ export interface IDataMapperChainConfig {
    * Optional name of the DataMapperChain
    */
   name?: string;
+
+  /**
+   * Optional meta information to put on mapper
+   */
+  meta?: object;
 }
 
 /**
@@ -35,6 +40,7 @@ export class DataMapperChain {
   mappers: IMapper[] = [];
   initialValue: IDataValue = "";
   name: string = "";
+  meta: object = {};
 
   /**
    * Create a new instance of a DataMapperChain.
@@ -43,9 +49,11 @@ export class DataMapperChain {
   constructor({
     mappers = [],
     name = "",
-  }: IDataMapperChainConfig = { mappers, name }) {
+    meta = {},
+  }: IDataMapperChainConfig = { mappers, name, meta }) {
     this.name = name;
     this.mappers = mappers;
+    this.meta = meta;
   }
 
   /**
