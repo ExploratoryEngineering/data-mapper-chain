@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.6.1"></a>
+## [0.6.1](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.6.0...v0.6.1) (2018-12-03)
+
+
+### Features
+
+* **mapperconfig:** allow for backwards compitability in mapper configs ([f701c0c](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/f701c0c))
+* **versioned-configs:** add version to serialized config ([6985bb9](https://github.com/ExploratoryEngineering/data-mapper-chain/commit/6985bb9))
+
+
+
 <a name="0.6.0"></a>
 # [0.6.0](https://github.com/ExploratoryEngineering/data-mapper-chain/compare/v0.5.2...v0.6.0) (2018-11-29)
 
