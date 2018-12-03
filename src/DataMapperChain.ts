@@ -78,7 +78,15 @@ export class DataMapperChain {
   loadConfig(configString: string): DataMapperChain {
     const parsedConfig = JSON.parse(configString);
     this.name = parsedConfig.name;
-    const mapperConfigs: IMapperConfig[] = parsedConfig.mappers;
+    let mapperConfigs: IMapperConfig[] = [];
+
+    mapperConfigs = parsedConfig.mappers.map((mapper: IMapperConfig) => {
+      if (mapper.ident) {
+        mapper.id = mapper.ident;
+      }
+
+      return mapper;
+    });
 
     mapperConfigs.forEach((config) => {
       const mapper = this.createMapperByConfig(config);

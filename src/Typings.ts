@@ -7,6 +7,8 @@ export enum IOutputType {
 
 export interface IMapperConfig {
   id: string;
+  /** @deprecated */
+  ident?: string;
   params: any;
 }
 

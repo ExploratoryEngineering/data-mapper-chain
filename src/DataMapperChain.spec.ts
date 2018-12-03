@@ -103,6 +103,19 @@ describe("Data mapper chain", () => {
         p2: "2",
       });
     });
+
+    it("should be able to deserialize old mapper configs", () => {
+      const serializedConfig = `{"name":"Test","mappers":[{"ident":"MOCK","params":{"p1":1,"p2":"2"}}]}`;
+
+      dataMapperChain.loadConfig(serializedConfig);
+
+      expect(dataMapperChain.name).toBe("Test");
+      expect(dataMapperChain.mappers.length).toBe(1);
+      expect((dataMapperChain.mappers[0] as MapperMock).initParams).toEqual({
+        p1: 1,
+        p2: "2",
+      });
+    });
   });
 
   describe("Mapper configuration", () => {
