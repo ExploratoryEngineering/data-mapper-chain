@@ -3,6 +3,8 @@ import { Mappers } from "./Mappers";
 import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./Typings";
 
 const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
+// tslint:disable-next-line:no-var-requires
+const { version } = require("../package.json");
 
 class MapperMock implements IMapper {
   initParams: any = {};
@@ -71,14 +73,14 @@ describe("Data mapper chain", () => {
       dataMapperChain.mappers = [];
 
       const serializedConfig = dataMapperChain.serializeConfig();
-      expect(serializedConfig).toBe(`{"name":"Test","mappers":[]}`);
+      expect(serializedConfig).toBe(`{"name":"Test","version":"${version}","mappers":[]}`);
     });
 
     it("should correctly serialize with mapper", () => {
       dataMapperChain.addMapper(new MapperMock());
 
       const serializedConfig = dataMapperChain.serializeConfig();
-      expect(serializedConfig).toBe(`{"name":"","mappers":[{"id":"MOCK","params":{"p1":1,"p2":"2"}}]}`);
+      expect(serializedConfig).toBe(`{"name":"","version":"${version}","mappers":[{"id":"MOCK","params":{"p1":1,"p2":"2"}}]}`);
     });
 
     it("should correctly deserialize with no mappers", () => {
