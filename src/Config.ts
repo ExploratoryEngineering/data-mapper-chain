@@ -42,7 +42,7 @@ export enum Base64DecodeAs {
    */
   STRING = "string",
   /**
-   * Config parameter for definint decoding as hex string
+   * Config parameter for defining decoding as hex string
    */
   HEXSTRING = "hexstring",
 }
