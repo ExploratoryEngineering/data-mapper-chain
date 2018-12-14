@@ -2,7 +2,7 @@ import { IBase64Config, IChunkConfig, IFromJSONConfig, IHexToFloatConfig, IHexTo
 import { AVAILABLE_MAPPERS_TYPES, Mappers } from "./Mappers";
 import { IDataValue, IMapper, IMapperConfig, IMapperType } from "./Typings";
 
-const CURRENT_VERSION = "0.6.1";
+const CURRENT_VERSION = "0.6.2";
 const { Base64, Chunk, FromJSON, HexToFloat, HexToInt, Offset } = Mappers;
 
 /**
