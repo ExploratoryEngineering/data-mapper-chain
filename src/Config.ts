@@ -33,7 +33,22 @@ export enum Base64Action {
   DECODE = "decode",
 }
 
+/**
+ * Base64DecodeAs used as config parameter
+ */
+export enum Base64DecodeAs {
+  /**
+   * Config parameter for defining decoding as string
+   */
+  STRING = "string",
+  /**
+   * Config parameter for definint decoding as hex string
+   */
+  HEXSTRING = "hexstring",
+}
+
 export const Config = {
   Base64Action,
+  Base64DecodeAs,
   Endianness,
 };

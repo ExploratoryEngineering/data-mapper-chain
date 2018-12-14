@@ -63,5 +63,9 @@
     "hooks": {
       "commit-msg": "validate-commit-msg"
     }
+  },
+  "dependencies": {
+    "@types/base64-js": "1.2.5",
+    "base64-js": "1.3.0"
   }
 }

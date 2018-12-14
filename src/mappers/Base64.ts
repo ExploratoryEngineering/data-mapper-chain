@@ -1,8 +1,10 @@
-import { Base64Action } from "../Config";
+import * as base64js from "base64-js";
+import { Base64Action, Base64DecodeAs } from "../Config";
 import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 
 export interface IBase64Config {
   action?: Base64Action;
+  decodeAs?: Base64DecodeAs;
 }
 
 export class Base64 implements IMapper {
@@ -13,11 +15,14 @@ export class Base64 implements IMapper {
   outputType: IOutputType = IOutputType.string;
 
   action: Base64Action = Base64Action.DECODE;
+  decodeAs: Base64DecodeAs = Base64DecodeAs.STRING;
 
   constructor({
     action = Base64Action.DECODE,
+    decodeAs = Base64DecodeAs.STRING,
   }: IBase64Config = {}) {
     this.action = action;
+    this.decodeAs = decodeAs;
   }
 
   config(): IMapperConfig {
@@ -25,6 +30,7 @@ export class Base64 implements IMapper {
       id: Base64.id,
       params: {
         action: this.action,
+        decodeAs: this.decodeAs,
       },
     };
   }
@@ -34,20 +40,29 @@ export class Base64 implements IMapper {
       return data;
     }
 
-    let resString = data.toString();
+    let resString: string = data as string;
 
     if (this.action === Base64Action.DECODE) {
       try {
-        resString = window.atob(resString);
+        const uintArr = base64js.toByteArray(data as string);
+
+        if (this.decodeAs === Base64DecodeAs.STRING) {
+          return String.fromCharCode.apply(null, uintArr as any);
+        } else if (this.decodeAs === Base64DecodeAs.HEXSTRING) {
+          return Array.from(uintArr, (byte: number) => {
+            return ("0" + (byte & 0xFF).toString(16)).slice(-2);
+          }).join("");
+        }
       } catch (e) {
-        return data;
+        return resString;
       }
     }
+
     if (this.action === Base64Action.ENCODE) {
       try {
         resString = window.btoa(resString);
       } catch (e) {
-        return data;
+        return resString;
       }
     }
 
