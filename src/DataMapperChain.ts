@@ -65,6 +65,7 @@ export class DataMapperChain {
     return JSON.stringify({
       name: this.name,
       version: CURRENT_VERSION,
+      meta: this.meta,
       mappers: this.mappers.map((mapper) => {
         return mapper.config();
       }),
@@ -78,6 +79,7 @@ export class DataMapperChain {
   loadConfig(configString: string): DataMapperChain {
     const parsedConfig = JSON.parse(configString);
     this.name = parsedConfig.name;
+    this.meta = parsedConfig.meta;
     let mapperConfigs: IMapperConfig[] = [];
 
     mapperConfigs = parsedConfig.mappers.map((mapper: IMapperConfig) => {

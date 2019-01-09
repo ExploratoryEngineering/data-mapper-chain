@@ -73,14 +73,23 @@ describe("Data mapper chain", () => {
       dataMapperChain.mappers = [];
 
       const serializedConfig = dataMapperChain.serializeConfig();
-      expect(serializedConfig).toBe(`{"name":"Test","version":"${version}","mappers":[]}`);
+      expect(serializedConfig).toBe(`{"name":"Test","version":"${version}","meta":{},"mappers":[]}`);
+    });
+
+    it("should correctly serialize meta", () => {
+      dataMapperChain.name = "Test";
+      dataMapperChain.mappers = [];
+      dataMapperChain.meta = { data: "someValue" };
+
+      const serializedConfig = dataMapperChain.serializeConfig();
+      expect(serializedConfig).toBe(`{"name":"Test","version":"${version}","meta":{"data":"someValue"},"mappers":[]}`);
     });
 
     it("should correctly serialize with mapper", () => {
       dataMapperChain.addMapper(new MapperMock());
 
       const serializedConfig = dataMapperChain.serializeConfig();
-      expect(serializedConfig).toBe(`{"name":"","version":"${version}","mappers":[{"id":"MOCK","params":{"p1":1,"p2":"2"}}]}`);
+      expect(serializedConfig).toBe(`{"name":"","version":"${version}","meta":{},"mappers":[{"id":"MOCK","params":{"p1":1,"p2":"2"}}]}`);
     });
 
     it("should correctly deserialize with no mappers", () => {
