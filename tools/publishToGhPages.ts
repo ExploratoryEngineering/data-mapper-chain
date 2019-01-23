@@ -30,8 +30,14 @@ exec('git config user.name "Per Kristian Kummermo"');
 exec('git config user.email "per.kristian@telenordigital.com"');
 exec('git commit -m "docs(docs): update gh-pages"');
 
-exec(
-  `git push --force --quiet "https://${ghToken}@${repository}" master:gh-pages`,
-);
+if (ghToken) {
+  exec(
+    `git push --force --quiet "https://${ghToken}@${repository}" master:gh-pages`,
+  );
+} else {
+  exec(
+    `git push --force --quiet git@github.com:ExploratoryEngineering/data-mapper-chain.git master:gh-pages`,
+  );
+}
 
 echo("Docs deployed");
