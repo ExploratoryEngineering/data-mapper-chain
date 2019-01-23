@@ -92,14 +92,57 @@ dataMapperChain.mapData(deviceData); // prints 587
 
 ```
 
-## What
+## Available mappers
+
+All mappers have fully optional configurations, meaning if no configuration is provided it will fallback to sane defaults. It also supports partly providing parameters if you want to just override one option of the mapper.
+
+### Base64
+
+Supports encoding and decoding of base64 input.
+
+[Configuration](./tutorials/base64-tutorial)
+
+### Chunk
+
+Take a chunk of the input and return it.
+
+[Configuration](./tutorials/chunk-tutorial)
+
+### FromJSON
+
+Traverse a JSON struct and return value.
+
+[Configuration](./tutorials/fromJson-tutorial)
+
+### HexToFloat
+
+Take a hex input and convert it to a float.
+
+[Configuration](./tutorials/hexToFloat-tutorial)
+
+### HexToInt
+
+Take a hex input and convert it to an int.
+
+[Configuration](./tutorials/hexToInt-tutorial)
+
+
+### Offset
+
+Take an input and offset it by a positive or negative value.
+
+[Configuration](./tutorials/offset-tutorial)
+
+## History
+
+### What
 The main workhorse is the `DataMapperChain` which serves a couple of purposes. It contains the different mappers you want to use in your "chain" of mappers and has functions to apply all mappers on a data set. It also allows for serializing configuration of both the chain and the added mappers. This serialized version can again be loaded directly into a new `DataMapperChain` which is now fully configured with the saved params. 
 
-## Why
+### Why
 I found myself fiddling with a lot of IoT data recently and a need to graph it easily. The libs which which I found either relied heavily on `eval` or didn't have any typings. I put together this lib which is modular and pluggable and hopefully solves someones problem alongside mine.
 
-## Pluggable
+### Pluggable
 While the lib provide a decent amount of mappers as a starting point, I know I don't cover every use case out there.
 
-## Tiny
+### Tiny
 The library relies mostly on native functions meaning it shouldn't get too big. More complex mappers should be application specific and be a part of the application which imports the library.

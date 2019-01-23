@@ -4,6 +4,9 @@ export interface IOffsetConfig {
   offset?: number | string;
 }
 
+/**
+ * [[include:offset-tutorial.md]]
+ */
 export class Offset implements IMapper {
   static id: string = "OFFSET";
   static description: string = "Offset number";

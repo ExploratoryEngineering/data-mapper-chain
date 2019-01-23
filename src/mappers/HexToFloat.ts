@@ -5,6 +5,9 @@ export interface IHexToFloatConfig {
   endianness?: Endianness;
 }
 
+/**
+ * [[include:hexToFloat-tutorial.md]]
+ */
 export class HexToFloat implements IMapper {
   static id: string = "HEXTOFLOAT";
   static description: string = "Hex to float";

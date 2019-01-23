@@ -7,6 +7,9 @@ export interface IBase64Config {
   decodeAs?: Base64DecodeAs;
 }
 
+/**
+ * [[include:base64-tutorial.md]]
+ */
 export class Base64 implements IMapper {
   static id: string = "BASE64";
   static description: string = "Base64";

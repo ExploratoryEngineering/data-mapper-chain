@@ -6,6 +6,9 @@ export interface IHexToIntConfig {
   signed?: boolean;
 }
 
+/**
+ * [[include:hexToInt-tutorial.md]]
+ */
 export class HexToInt implements IMapper {
   static id: string = "HEXTOINT";
   static description: string = "Hex to int";

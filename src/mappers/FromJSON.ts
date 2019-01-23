@@ -4,6 +4,9 @@ export interface IFromJSONConfig {
   propertyString?: string;
 }
 
+/**
+ * [[include:fromJson-tutorial.md]]
+ */
 export class FromJSON implements IMapper {
   static id: string = "FROMJSON";
   static description: string = "JSON";

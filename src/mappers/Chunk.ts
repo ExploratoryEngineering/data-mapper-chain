@@ -7,6 +7,9 @@ export interface IChunkConfig {
   size?: string | number;
 }
 
+/**
+ * [[include:chunk-tutorial.md]]
+ */
 export class Chunk implements IMapper {
   static id: string = "CHUNK";
   static description: string = "Chunk";
