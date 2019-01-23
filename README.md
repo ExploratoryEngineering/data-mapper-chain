@@ -100,38 +100,38 @@ All mappers have fully optional configurations, meaning if no configuration is p
 
 Supports encoding and decoding of base64 input.
 
-[Configuration](./tutorials/base64-tutorial)
+[Configuration](./tutorials/base64-tutorial.md)
 
 ### Chunk
 
 Take a chunk of the input and return it.
 
-[Configuration](./tutorials/chunk-tutorial)
+[Configuration](./tutorials/chunk-tutorial.md)
 
 ### FromJSON
 
 Traverse a JSON struct and return value.
 
-[Configuration](./tutorials/fromJson-tutorial)
+[Configuration](./tutorials/fromJson-tutorial.md)
 
 ### HexToFloat
 
 Take a hex input and convert it to a float.
 
-[Configuration](./tutorials/hexToFloat-tutorial)
+[Configuration](./tutorials/hexToFloat-tutorial.md)
 
 ### HexToInt
 
 Take a hex input and convert it to an int.
 
-[Configuration](./tutorials/hexToInt-tutorial)
+[Configuration](./tutorials/hexToInt-tutorial.md)
 
 
 ### Offset
 
 Take an input and offset it by a positive or negative value.
 
-[Configuration](./tutorials/offset-tutorial)
+[Configuration](./tutorials/offset-tutorial.md)
 
 ## History
 
