@@ -3,7 +3,7 @@ import { IDataValue, IMapper, IMapperConfig, IOutputType } from "./../Typings";
 export interface IChunkConfig {
   // Start-index of chunk
   start?: string | number;
-  // Size of chunk i char-length
+  // Size of chunk as char-length
   size?: string | number;
 }
 
