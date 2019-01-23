@@ -25,6 +25,10 @@ Simple data mapper library meant to be run in browser to ease data transformatio
 </body>
 ```
 
+### Codepen example
+Play around with this [Codepen pen](https://codepen.io/pkkummermo/pen/MLgVPO?editors=1010) for a real life example usage of 
+the data-mapper-chain.
+
 ## Example: In ts
 You must first install the dependency
 
