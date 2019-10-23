@@ -53,7 +53,7 @@ export class Base64 implements IMapper {
           return String.fromCharCode.apply(null, uintArr as any);
         } else if (this.decodeAs === Base64DecodeAs.HEXSTRING) {
           return Array.from(uintArr, (byte: number) => {
-            return ("0" + (byte & 0xFF).toString(16)).slice(-2);
+            return ("0" + (byte & 0xff).toString(16)).slice(-2);
           }).join("");
         }
       } catch (e) {

@@ -21,5 +21,5 @@ export interface IMapper {
 export interface IMapperType {
   id: string;
   value: string;
-  entity: { new(params: object): IMapper };
+  entity: { new (params: object): IMapper };
 }

@@ -1,4 +1,11 @@
-import { IBase64Config, IChunkConfig, IFromJSONConfig, IHexToFloatConfig, IHexToIntConfig, IOffsetConfig } from "./Config";
+import {
+  IBase64Config,
+  IChunkConfig,
+  IFromJSONConfig,
+  IHexToFloatConfig,
+  IHexToIntConfig,
+  IOffsetConfig,
+} from "./Config";
 import { AVAILABLE_MAPPERS_TYPES, Mappers } from "./Mappers";
 import { IDataValue, IMapper, IMapperConfig, IMapperType } from "./Typings";
 
@@ -46,12 +53,13 @@ export class DataMapperChain {
   /**
    * Create a new instance of a DataMapperChain.
    * @param __namedParameters DataMapperChain configuration object
+   * @param mappers The initial mappers for the DataMapperChain
    */
   constructor({
     mappers = [],
     name = "",
     meta = {},
-  }: IDataMapperChainConfig = { mappers, name, meta }) {
+  }: IDataMapperChainConfig = {}) {
     this.name = name;
     this.mappers = mappers;
     this.meta = meta;

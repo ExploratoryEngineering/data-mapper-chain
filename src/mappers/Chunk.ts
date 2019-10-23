@@ -20,10 +20,7 @@ export class Chunk implements IMapper {
   start: number = 0;
   size: number = 4;
 
-  constructor({
-    start = "0",
-    size = "4",
-  }: IChunkConfig = { start, size }) {
+  constructor({ start = "0", size = "4" }: IChunkConfig = {}) {
     this.start = parseInt(start.toString(), 10);
     this.size = parseInt(size.toString(), 10);
   }

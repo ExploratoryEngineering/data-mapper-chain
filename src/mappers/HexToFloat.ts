@@ -18,9 +18,7 @@ export class HexToFloat implements IMapper {
   endianness: Endianness = Endianness.BIG_ENDIAN;
   hexRegExp: RegExp = new RegExp(/^[a-fxA-F0-9_]+$/);
 
-  constructor({
-    endianness = Endianness.BIG_ENDIAN,
-  }: IHexToFloatConfig = {}) {
+  constructor({ endianness = Endianness.BIG_ENDIAN }: IHexToFloatConfig = {}) {
     this.endianness = endianness;
   }
 
@@ -58,8 +56,10 @@ export class HexToFloat implements IMapper {
     const hexValue = parseInt(resString, 16);
 
     const signed = hexValue >> 31 ? -1 : 1;
-    const exponent = (hexValue >> 23) & 0xFF;
-    const resValue: number = signed * (hexValue & 0x7fffff | 0x800000) * 1.0 / Math.pow(2, 23) * Math.pow(2, (exponent - 127));
+    const exponent = (hexValue >> 23) & 0xff;
+    const resValue: number =
+      ((signed * ((hexValue & 0x7fffff) | 0x800000) * 1.0) / Math.pow(2, 23)) *
+      Math.pow(2, exponent - 127);
 
     return resValue;
   }

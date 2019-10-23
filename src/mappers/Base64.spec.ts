@@ -6,8 +6,10 @@ describe("Base64 mapper", () => {
   const helloWorldBase64: string = "aGVsbG8gd29ybGQ=";
   const helloWorldString: string = "hello world";
 
-  const hexBase64: string = "SAHkwD45wbQ/jbR0Qc5mZkGSiIA/MjQAAAHLAIAAA+K0AAIAAw==";
-  const hexString: string = "4801e4c03e39c1b43f8db47441ce6666419288803f3234000001cb00800003e2b400020003";
+  const hexBase64: string =
+    "SAHkwD45wbQ/jbR0Qc5mZkGSiIA/MjQAAAHLAIAAA+K0AAIAAw==";
+  const hexString: string =
+    "4801e4c03e39c1b43f8db47441ce6666419288803f3234000001cb00800003e2b400020003";
 
   beforeEach(() => {
     base64 = new Base64();

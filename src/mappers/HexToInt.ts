@@ -69,8 +69,9 @@ export class HexToInt implements IMapper {
     let resValue: number = parseInt(resString, 16);
 
     if (this.signed) {
-      if (resValue >= parseInt(("0x8" + "0".repeat(resString.length - 3)), 16)) {
-        resValue = resValue - (parseInt("0x1" + "0".repeat(resString.length - 2), 16));
+      if (resValue >= parseInt("0x8" + "0".repeat(resString.length - 3), 16)) {
+        resValue =
+          resValue - parseInt("0x1" + "0".repeat(resString.length - 2), 16);
       }
     }
 

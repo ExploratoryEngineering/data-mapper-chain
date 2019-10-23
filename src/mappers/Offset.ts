@@ -16,9 +16,7 @@ export class Offset implements IMapper {
 
   offset: number = 0;
 
-  constructor({
-    offset = "0",
-  }: IOffsetConfig = {}) {
+  constructor({ offset = "0" }: IOffsetConfig = {}) {
     this.offset = parseInt(offset.toString(), 10);
   }
 

@@ -9,6 +9,8 @@ export * from "./Typings";
  * Create a new instance of a DataMapperChain.
  * @param newDataMapperChainParams DataMapperChain configuration object
  */
-export const create = (newDataMapperChainParams: IDataMapperChainConfig = {}): DataMapperChain => {
+export const create = (
+  newDataMapperChainParams: IDataMapperChainConfig = {},
+): DataMapperChain => {
   return new DataMapperChain(newDataMapperChainParams);
 };

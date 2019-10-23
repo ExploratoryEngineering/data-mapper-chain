@@ -13,9 +13,7 @@ describe("FromJSON mapper", () => {
     },
   };
   const arrayTestObject = {
-    myArray: [
-      "arrayTestObjectValue",
-    ],
+    myArray: ["arrayTestObjectValue"],
   };
 
   beforeEach(() => {

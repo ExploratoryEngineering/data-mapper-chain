@@ -16,9 +16,7 @@ export class FromJSON implements IMapper {
 
   propertyString: string = "";
 
-  constructor({
-    propertyString = "",
-  }: IFromJSONConfig = {}) {
+  constructor({ propertyString = "" }: IFromJSONConfig = {}) {
     this.propertyString = propertyString;
   }
 

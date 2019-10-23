@@ -17,33 +17,41 @@ export const Mappers = {
   base64: (params: IBase64Config = {}): Base64 => new Base64(params),
   chunk: (params: IChunkConfig = {}): Chunk => new Chunk(params),
   fromJson: (params: IFromJSONConfig = {}): FromJSON => new FromJSON(params),
-  hexToFloat: (params: IHexToFloatConfig = {}): HexToFloat => new HexToFloat(params),
+  hexToFloat: (params: IHexToFloatConfig = {}): HexToFloat =>
+    new HexToFloat(params),
   hexToInt: (params: IHexToIntConfig = {}): HexToInt => new HexToInt(params),
   offset: (params: IOffsetConfig = {}): Offset => new Offset(params),
 };
 
-export let AVAILABLE_MAPPERS_TYPES: IMapperType[] = [{
-  id: Chunk.id,
-  value: Chunk.description,
-  entity: Chunk,
-}, {
-  id: HexToFloat.id,
-  value: HexToFloat.description,
-  entity: HexToFloat,
-}, {
-  id: HexToInt.id,
-  value: HexToInt.description,
-  entity: HexToInt,
-}, {
-  id: Offset.id,
-  value: Offset.description,
-  entity: Offset,
-}, {
-  id: Base64.id,
-  value: Base64.description,
-  entity: Base64,
-}, {
-  id: FromJSON.id,
-  value: FromJSON.description,
-  entity: FromJSON,
-}];
+export let AVAILABLE_MAPPERS_TYPES: IMapperType[] = [
+  {
+    id: Chunk.id,
+    value: Chunk.description,
+    entity: Chunk,
+  },
+  {
+    id: HexToFloat.id,
+    value: HexToFloat.description,
+    entity: HexToFloat,
+  },
+  {
+    id: HexToInt.id,
+    value: HexToInt.description,
+    entity: HexToInt,
+  },
+  {
+    id: Offset.id,
+    value: Offset.description,
+    entity: Offset,
+  },
+  {
+    id: Base64.id,
+    value: Base64.description,
+    entity: Base64,
+  },
+  {
+    id: FromJSON.id,
+    value: FromJSON.description,
+    entity: FromJSON,
+  },
+];
