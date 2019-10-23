@@ -54,6 +54,8 @@ export class DataMapperChain {
    * Create a new instance of a DataMapperChain.
    * @param __namedParameters DataMapperChain configuration object
    * @param mappers The initial mappers for the DataMapperChain
+   * @param name The initial name for the DataMapperChain
+   * @param meta The initial meta data for the DataMapperChain
    */
   constructor({
     mappers = [],
